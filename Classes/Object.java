@@ -1,7 +1,7 @@
 package Classes;
 
-public class Object {
-    //Körper
+abstract public class Object {
+    //Body
     private Triangle[] triangles;
 
     //Coords
