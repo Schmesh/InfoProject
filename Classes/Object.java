@@ -1,5 +1,7 @@
 package Classes;
 
+import javax.swing.*;
+
 public class Object {
     //Körper
     private Triangle[] triangles;
@@ -21,4 +23,19 @@ public class Object {
 
     }
 
+    public static class Window {
+        JFrame window;
+
+        Window(){
+            //Creates a new Classes.Object.Window and makes it visible
+            window = new JFrame("test");
+            window.setVisible(true);
+            window.pack();
+            window.setLocationRelativeTo(null);
+            window.setSize(300, 300);
+            //stops Program when the window is closed
+            window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        }
+
+    }
 }
