@@ -1,4 +1,4 @@
-class Object:
+class Classes.Object:
 Attribute:
 besteht aus Dreicken (arraylist)
 Orientation
