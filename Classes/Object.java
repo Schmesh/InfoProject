@@ -16,4 +16,9 @@ public class Object {
     public double[] getCoords(){
         return xyz;
     }
+
+    public void setTriangles(Triangle[] triangles) {
+
+    }
+
 }
