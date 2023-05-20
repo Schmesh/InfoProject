@@ -1,0 +1,9 @@
+class Object:
+Attribute:
+besteht aus Dreicken (arraylist)
+Orientation
+Position
+
+Methoden:
+    GetCoords
+    GetOrientation
