@@ -1,7 +1,10 @@
 package Classes;
 
+
 abstract public class Object {
     //Body
+
+
     private Triangle[] triangles;
 
     //Coords
