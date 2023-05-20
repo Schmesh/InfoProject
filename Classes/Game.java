@@ -1,9 +1,9 @@
 package Classes;
 
 public class Game implements Runnable {
-    public int FPS = 60;
-    public long maxLoopTime = 1000 / FPS;
-    public boolean running = true;
+    private int FPS = 60;
+    private long maxLoopTime = 1000 / FPS;
+    private boolean running = true;
 
     public void Game(String[] args) {
         Game game = new Game();
