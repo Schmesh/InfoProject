@@ -9,6 +9,7 @@ public class Window {
         window.setVisible(true);
         window.pack();
         window.setLocationRelativeTo(null);
+        window.setSize(300, 300);
         //stops Program when the window is closed
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
