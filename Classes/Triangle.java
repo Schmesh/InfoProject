@@ -1,7 +1,10 @@
 package Classes;
 
 public class Triangle {
+
     public Point[] p = new Point[3];;
+
+
 
     Triangle(Point[] pInput){
         //Points

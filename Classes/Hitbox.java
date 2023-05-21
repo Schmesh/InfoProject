@@ -4,9 +4,16 @@ public class Hitbox {
     private Point[] points;
     private Point pos;
 
+    private double[] xyzSize;
+
     Hitbox(Point Pos, double[]xyzSize){
+        this.xyzSize = xyzSize;
         pos = Pos;
         points = new Point[8];
+
+        for (int i=0; i<8;i++){
+            points[i]=new Point(0,0,0);
+        }
         //Corners
         points[0].setXyz(Pos.getXYZ()[0]-(xyzSize[0]/2), Pos.getXYZ()[1]-(xyzSize[1]/2), Pos.getXYZ()[2]-(xyzSize[2]/2) );
         points[1].setXyz(Pos.getXYZ()[0]-(xyzSize[0]/2), Pos.getXYZ()[1]-(xyzSize[1]/2), Pos.getXYZ()[2]+(xyzSize[2]/2) );
@@ -22,6 +29,14 @@ public class Hitbox {
         return points[index];
     }
 
+    public Point getPos(){return pos;}
+
+    public double[] getXyzSize(){return xyzSize;}
+
+    public double getDiameter(){
+        return Math.sqrt((getXyzSize()[0]*getXyzSize()[0])+(getXyzSize()[1]*getXyzSize()[1])+(getXyzSize()[2]*getXyzSize()[2]));
+    }
+
     public boolean checkCollision(Point point){
         if (    point.getXYZ()[0]>points[0].getXYZ()[0] && point.getXYZ()[0]<points[4].getXYZ()[0] &&   //Control X Overlap
                 point.getXYZ()[1]>points[0].getXYZ()[1] && point.getXYZ()[1]<points[3].getXYZ()[1] &&   //Control Y Overlap
@@ -35,11 +50,18 @@ public class Hitbox {
 
     public boolean checkCollision(Hitbox hitbox){
         boolean b = false;
-        for (int i =0; i<8; i++){
-            if (checkCollision(hitbox.getPoint(i))){
-                b=true;
-            }
+        if (    Math.abs(hitbox.getPos().getXYZ()[0]-pos.getXYZ()[0])<hitbox.getXyzSize()[0]/2+xyzSize[0]/2 &&
+                Math.abs(hitbox.getPos().getXYZ()[1]-pos.getXYZ()[1])<hitbox.getXyzSize()[1]/2+xyzSize[1]/2 &&
+                Math.abs(hitbox.getPos().getXYZ()[2]-pos.getXYZ()[2])<hitbox.getXyzSize()[2]/2+xyzSize[2]/2){
+            b = true;
         }
         return b;
+    }
+
+    public void move(double dx, double dy, double dz){
+        pos.move(dx,dy,dz);
+        for (int i=0; i<8; i++){
+            points[i].move(dx,dy,dz);
+        }
     }
 }
