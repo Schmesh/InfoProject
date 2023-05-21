@@ -4,8 +4,8 @@ public class Entity extends PhysicsObject{
     private double[] velocities = new double[]{0,0,0};
 
     private double[] accelerations = new double[]{0,0,0};
-    private double direction; //0 = positive X, rotation clockwise in degrees (90 ist positive y)
-    private double speed;
+    protected double direction; //0 = positive X, rotation clockwise in degrees (90 ist positive y)
+    protected double speed;
 
     Entity(Hitbox hitbox, boolean hasHP){
         super(hitbox, hasHP);
@@ -14,6 +14,9 @@ public class Entity extends PhysicsObject{
     public void setSpeed(double speed){this.speed = speed;}
     public void addSpeed(double speed){this.speed +=speed;}
     public double getSpeed(){return speed;}
+    public void setDirection(double direction){this.direction = direction;}
+    public void addDirection(double direction){this.direction += direction;}
+    public double getDirection(double direction){return direction;}
 
     public void move(double dx, double dy, double dz){
         pos.move(dx,dy,dz);
@@ -52,7 +55,7 @@ public class Entity extends PhysicsObject{
         velocities[2] += accelerations[2];
     }
 
-    public void updateVelocityXY(){
+    public void updateVelocityXY(double speed, double direction){
         velocities[0]=Math.cos(Math.toRadians(direction))*speed;
         velocities[1]=Math.sin(Math.toRadians(direction))*speed;
     }
