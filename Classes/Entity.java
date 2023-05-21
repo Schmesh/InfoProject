@@ -81,6 +81,7 @@ public class Entity extends PhysicsObject{
                 if(this.hitbox.getPos().getXYZ()[2]<hitbox.getPos().getXYZ()[2]){
                     dz=-0.001;
                 }
+                move(dx,dy,dz);
             }
         }
     }

@@ -1,7 +1,7 @@
 package Classes;
 
 public class Gamestate {
-    private int FPS = 60;
+    private int FPS = 30;
     //Attribute sind alle Spielelemente
     Player player;
 
