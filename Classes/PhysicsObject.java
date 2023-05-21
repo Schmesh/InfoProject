@@ -1,8 +1,8 @@
 package Classes;
 
 public class PhysicsObject {
-    Hitbox hitbox;
-    Point pos;
+    protected Hitbox hitbox;
+    protected Point pos;
 
     boolean hasHP;
 

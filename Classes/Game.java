@@ -16,7 +16,8 @@ public class Game implements Runnable {
         long oldTime;
         while(running) {
             oldTime = System.currentTimeMillis();
-            //update game
+            //update
+            Gamestate.updateGamestate();
             time = System.currentTimeMillis();
             if(time-oldTime > maxLoopTime) {
 
