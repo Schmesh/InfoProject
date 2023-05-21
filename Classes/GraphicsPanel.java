@@ -19,8 +19,12 @@ public class GraphicsPanel extends JPanel {
         repaint();
     }
 
+    public void clearLines(){
+        lineArray.clear();
+    }
+
     @Override
-    protected void paintComponent(Graphics g) {
+    protected void paintComponent(java.awt.Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(Color.white);
@@ -33,6 +37,8 @@ public class GraphicsPanel extends JPanel {
             g2d.drawLine((int)Math.round(lineArray.get(i)[0]),(int)Math.round(lineArray.get(i)[1]),(int)Math.round(lineArray.get(i)[2]),(int)Math.round(lineArray.get(i)[3]));
         }
     }
+
+
 }
 
 

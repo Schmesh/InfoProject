@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class Window {
     JFrame window;
     public GraphicsPanel panel;
-    private double fov = 40;
+    private double fov = 90;
     private double distanceToScreen = 0.1;
     private double viewDistance = 1000;
 

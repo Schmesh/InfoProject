@@ -1,12 +1,15 @@
 package Classes;
 
 public class Game implements Runnable {
-    Gamestate gamestate;
+    Gamestate gamestate = new Gamestate();
+    Graphics graphics = new Graphics();
+
     private int FPS = 60;
     private long maxLoopTime = 1000 / FPS;
     private boolean running = true;
 
     public void Game(String[] args) {
+
         Game game = new Game();
         new Thread(game).start();
     }
@@ -24,7 +27,7 @@ public class Game implements Runnable {
 
                 continue;
             }
-            //render
+            graphics.render();
             //System.out.println(time);
             time = System.currentTimeMillis();
             if(time-oldTime <= maxLoopTime) {
