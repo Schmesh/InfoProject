@@ -23,5 +23,11 @@ public class renderTools {
 
         return output;
     }
+    public static double[] getNormal(Triangle face){
+        double[] normal = new double[3];
+        return normal;
+    }
+
+
 
 }
