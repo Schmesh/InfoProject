@@ -1,10 +1,10 @@
 package Classes;
 
 public class Triangle {
-    Point[] p;
+    public Point[] p = new Point[3];;
 
     Triangle(Point[] pInput){
-        //Punkte
+        //Points
         p[0] = pInput[0];
         p[1] = pInput[1];
         p[2] = pInput[2];

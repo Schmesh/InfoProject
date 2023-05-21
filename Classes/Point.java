@@ -10,6 +10,9 @@ public class Point {
         xyz[1] = y;
         xyz[2] = z;
     }
+    Point(double[] xyz){
+        this.xyz = xyz;
+    }
     public double[] getXYZ(){
         return xyz;
     }

@@ -21,7 +21,11 @@ abstract public class Object {
     }
 
     public void setTriangles(Triangle[] triangles) {
+        this.triangles = triangles;
+    }
 
+    public Triangle[] getTriangles(){
+        return triangles;
     }
 
 }

@@ -23,7 +23,7 @@ public class Game implements Runnable {
                 continue;
             }
             //render
-            System.out.println(time);
+            //System.out.println(time);
             time = System.currentTimeMillis();
             if(time-oldTime <= maxLoopTime) {
                 try {

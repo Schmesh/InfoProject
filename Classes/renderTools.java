@@ -11,7 +11,15 @@ public class renderTools {
 
         output[0] = ((screenHeight/screenWidth)*( 1/ Math.tan( Math.toRadians(fov)/2 ) )*inputCoordinate[0]) / inputCoordinate[1];
         output[1] = inputCoordinate[1]*(viewDistance/(viewDistance-distanceToScreen))-((viewDistance*distanceToScreen)/(viewDistance-distanceToScreen));
-        output[2] = ( ( 1/ Math.tan( Math.toRadians(fov)/2 ) ) * inputCoordinate[2]) / inputCoordinate[1];
+        output[2] = ( ( 1/ Math.tan( Math.toRadians(fov)/2 ) ) * -inputCoordinate[2]) / inputCoordinate[1];
+
+        output[0] += 1;
+        output[2] += 1;
+
+        output[0] *= 0.5*screenWidth;
+        output[2] *= 0.5*screenHeight;
+
+        //System.out.println("x"+output[0]+" z"+ output[2] +" | x"+inputCoordinate[0]+" z"+inputCoordinate[2]);
 
         return output;
     }
