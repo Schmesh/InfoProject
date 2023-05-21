@@ -4,10 +4,16 @@ public class Entity extends PhysicsObject{
     private double[] velocities;
 
     private double[] accelerations;
+    private double direction; //0 = positive X, rotation clockwise in degrees (90 ist positive y)
+    private double speed;
 
     Entity(Hitbox hitbox, boolean hasHP){
         super(hitbox, hasHP);
     }
+
+    public void setSpeed(double speed){this.speed = speed;}
+    public void addSpeed(double speed){this.speed +=speed;}
+    public double getSpeed(){return speed;}
 
     public void setVelocityX(double velocityX){velocities[0] = velocityX;}
     public void setVelocityY(double velocityY){velocities[1] = velocityY;}
@@ -39,5 +45,10 @@ public class Entity extends PhysicsObject{
         velocities[0] += accelerations[0];
         velocities[1] += accelerations[1];
         velocities[2] += accelerations[2];
+    }
+
+    public void updateVelocityXY(){
+        velocities[0]=Math.cos(Math.toRadians(direction))*speed;
+        velocities[1]=Math.sin(Math.toRadians(direction))*speed;
     }
 }
