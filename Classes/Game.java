@@ -4,15 +4,16 @@ public class Game implements Runnable {
     Gamestate gamestate = new Gamestate();
     Graphics graphics = new Graphics();
 
-    private int FPS = 60;
+    private int FPS = gamestate.getFPS();
     private long maxLoopTime = 1000 / FPS;
     private boolean running = true;
 
     public void Game(String[] args) {
-
         Game game = new Game();
         new Thread(game).start();
     }
+
+
 
     @Override
     public void run() {

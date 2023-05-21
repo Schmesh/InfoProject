@@ -1,9 +1,9 @@
 package Classes;
 
 public class Entity extends PhysicsObject{
-    private double[] velocities;
+    private double[] velocities = new double[]{0,0,0};
 
-    private double[] accelerations;
+    private double[] accelerations = new double[]{0,0,0};
     private double direction; //0 = positive X, rotation clockwise in degrees (90 ist positive y)
     private double speed;
 
@@ -41,9 +41,9 @@ public class Entity extends PhysicsObject{
     }
 
     public void updatePos(double time){
-        pos.setX(pos.getXYZ()[0]+velocities[0]/time);
-        pos.setX(pos.getXYZ()[1]+velocities[1]/time);
-        pos.setX(pos.getXYZ()[2]+velocities[2]/time);
+        pos.setX(pos.getXYZ()[0]+velocities[0]*time);
+        pos.setX(pos.getXYZ()[1]+velocities[1]*time);
+        pos.setX(pos.getXYZ()[2]+velocities[2]*time);
     }
 
     public void updateVelocities(){
