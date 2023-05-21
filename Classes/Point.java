@@ -37,9 +37,9 @@ public class Point {
         xyz[2] = z;
     }
 
-    public void move(double[] dXdYdZ){
-        xyz[0] += dXdYdZ[0];
-        xyz[1] += dXdYdZ[1];
-        xyz[2] += dXdYdZ[2];
+    public void move(double dx, double dy, double dz){
+        xyz[0] += dx;
+        xyz[1] += dy;
+        xyz[2] += dz;
     }
 }

@@ -33,6 +33,10 @@ public class Hitbox {
 
     public double[] getXyzSize(){return xyzSize;}
 
+    public double getDiameter(){
+        return Math.sqrt((getXyzSize()[0]*getXyzSize()[0])+(getXyzSize()[1]*getXyzSize()[1])+(getXyzSize()[2]*getXyzSize()[2]));
+    }
+
     public boolean checkCollision(Point point){
         if (    point.getXYZ()[0]>points[0].getXYZ()[0] && point.getXYZ()[0]<points[4].getXYZ()[0] &&   //Control X Overlap
                 point.getXYZ()[1]>points[0].getXYZ()[1] && point.getXYZ()[1]<points[3].getXYZ()[1] &&   //Control Y Overlap
@@ -52,5 +56,12 @@ public class Hitbox {
             b = true;
         }
         return b;
+    }
+
+    public void move(double dx, double dy, double dz){
+        pos.move(dx,dy,dz);
+        for (int i=0; i<8; i++){
+            points[i].move(dx,dy,dz);
+        }
     }
 }

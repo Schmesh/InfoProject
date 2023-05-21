@@ -15,6 +15,11 @@ public class Entity extends PhysicsObject{
     public void addSpeed(double speed){this.speed +=speed;}
     public double getSpeed(){return speed;}
 
+    public void move(double dx, double dy, double dz){
+        pos.move(dx,dy,dz);
+        hitbox.move(dx,dy,dz);
+    }
+
     public void setVelocityX(double velocityX){velocities[0] = velocityX;}
     public void setVelocityY(double velocityY){velocities[1] = velocityY;}
     public void setVelocityZ(double velocityZ){velocities[2] = velocityZ;}
@@ -50,5 +55,30 @@ public class Entity extends PhysicsObject{
     public void updateVelocityXY(){
         velocities[0]=Math.cos(Math.toRadians(direction))*speed;
         velocities[1]=Math.sin(Math.toRadians(direction))*speed;
+    }
+
+    public void applyCollision(Hitbox hitbox){
+        Point p1 = hitbox.getPos();
+        Point p2 = this.hitbox.getPos();
+        double dX = Math.abs(hitbox.getXyzSize()[0])-Math.abs(this.hitbox.getXyzSize()[0]);
+        double dY = Math.abs(hitbox.getXyzSize()[1])-Math.abs(this.hitbox.getXyzSize()[1]);
+        double dZ = Math.abs(hitbox.getXyzSize()[2])-Math.abs(this.hitbox.getXyzSize()[2]);
+        double distance = Math.sqrt(dX*dX+dY*dY+dZ*dZ);
+        if (hitbox.getDiameter()/2+this.hitbox.getDiameter()/2>distance){
+            while (this.hitbox.checkCollision(hitbox)){
+                double dx = 0.001;
+                double dy = 0.001;
+                double dz = 0.001;
+                if(this.hitbox.getPos().getXYZ()[0]<hitbox.getPos().getXYZ()[0]){
+                    dx=-0.001;
+                }
+                if(this.hitbox.getPos().getXYZ()[1]<hitbox.getPos().getXYZ()[1]){
+                    dy=-0.001;
+                }
+                if(this.hitbox.getPos().getXYZ()[2]<hitbox.getPos().getXYZ()[2]){
+                    dz=-0.001;
+                }
+            }
+        }
     }
 }
