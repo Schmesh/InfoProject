@@ -6,9 +6,9 @@ public class PhysicsObject {
 
     boolean hasHP;
 
-    PhysicsObject(Hitbox hitbox, Point pos, boolean hasHP){
+    PhysicsObject(Hitbox hitbox, boolean hasHP){
         this.hitbox = hitbox;
-        this.pos = pos;
+        this.pos = hitbox.getPos();
         this.hasHP = hasHP;
     }
 

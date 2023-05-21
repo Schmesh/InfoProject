@@ -5,8 +5,8 @@ public class Entity extends PhysicsObject{
 
     private double[] accelerations;
 
-    Entity(Hitbox hitbox, Point pos, boolean hasHP){
-        super(hitbox, pos, hasHP);
+    Entity(Hitbox hitbox, boolean hasHP){
+        super(hitbox, hasHP);
     }
 
     public void setVelocityX(double velocityX){velocities[0] = velocityX;}
