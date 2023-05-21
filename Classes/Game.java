@@ -1,6 +1,7 @@
 package Classes;
 
 public class Game implements Runnable {
+    Gamestate gamestate;
     private int FPS = 60;
     private long maxLoopTime = 1000 / FPS;
     private boolean running = true;
@@ -17,7 +18,7 @@ public class Game implements Runnable {
         while(running) {
             oldTime = System.currentTimeMillis();
             //update
-            Gamestate.updateGamestate();
+            gamestate.updateGamestate();
             time = System.currentTimeMillis();
             if(time-oldTime > maxLoopTime) {
 
