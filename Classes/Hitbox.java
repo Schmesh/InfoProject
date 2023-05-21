@@ -10,6 +10,10 @@ public class Hitbox {
         this.xyzSize = xyzSize;
         pos = Pos;
         points = new Point[8];
+
+        for (int i=0; i<8;i++){
+            points[i]=new Point(0,0,0);
+        }
         //Corners
         points[0].setXyz(Pos.getXYZ()[0]-(xyzSize[0]/2), Pos.getXYZ()[1]-(xyzSize[1]/2), Pos.getXYZ()[2]-(xyzSize[2]/2) );
         points[1].setXyz(Pos.getXYZ()[0]-(xyzSize[0]/2), Pos.getXYZ()[1]-(xyzSize[1]/2), Pos.getXYZ()[2]+(xyzSize[2]/2) );
