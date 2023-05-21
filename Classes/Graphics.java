@@ -14,15 +14,15 @@ public class Graphics {
         //testCuboid2 = new Cuboid(new double[]{1,1,1},new double[]{1,3,0});
 
         for (int i=0;i<10;i++){
-            test[i]=new Cuboid(new double[]{1,1,1}, new double[]{0,1.1+i,0});
+            test[i]=new Cuboid(new double[]{1,1,1}, new double[]{-5+i,2+i,i/3.0});
         }
     }
 
     public void render(){
         testWindow.panel.clearLines();
-        //System.out.println("test");
         //testWindow.renderObjectWireframe(testCuboid);
         //testWindow.renderObjectWireframe(testCuboid2);
+
         for (int i=0;i<10;i++){
             testWindow.renderObjectWireframe(test[i]);
         }

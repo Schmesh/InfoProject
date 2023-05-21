@@ -32,8 +32,8 @@ public class GraphicsPanel extends JPanel {
         //AlphaComposite alphaComposite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, (float)0.5);
         //g2d.setComposite(alphaComposite);
 
-        for (int i = 0; i < lineArray.size();i++){
-            System.out.println();
+        int lineArraySize = lineArray.size();
+        for (int i = 0; i < lineArraySize;i++){
             g2d.drawLine((int)Math.round(lineArray.get(i)[0]),(int)Math.round(lineArray.get(i)[1]),(int)Math.round(lineArray.get(i)[2]),(int)Math.round(lineArray.get(i)[3]));
         }
     }

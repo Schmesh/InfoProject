@@ -28,7 +28,7 @@ public class Window {
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         lines = new ArrayList();
-
+        window.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
 
@@ -36,23 +36,20 @@ public class Window {
 
     public void renderObjectWireframe(Object object) {
 
-        for (int i = 0; i < object.getTriangles().length; i++) {
+        int trianglesLength = object.getTriangles().length;
+
+        for (int i = 0; i < trianglesLength; i++) {
             if (object.getTriangles()[i] != null){
                 Triangle renderedTri = new Triangle(new Point[3]);
                 renderedTri.p[0] = new Point(renderTools.project3d2d(object.getTriangles()[i].p[0].getXYZ(),fov,distanceToScreen,viewDistance,panel.getHeight(),panel.getWidth()));
                 renderedTri.p[1] = new Point(renderTools.project3d2d(object.getTriangles()[i].p[1].getXYZ(),fov,distanceToScreen,viewDistance,panel.getHeight(),panel.getWidth()));
                 renderedTri.p[2] = new Point(renderTools.project3d2d(object.getTriangles()[i].p[2].getXYZ(),fov,distanceToScreen,viewDistance,panel.getHeight(),panel.getWidth()));
-                System.out.println("Point0:"+renderedTri.p[0].getXYZ()[0]+" | "+renderedTri.p[0].getXYZ()[2]);
-                System.out.println("Point1:"+renderedTri.p[1].getXYZ()[0]+" | "+renderedTri.p[1].getXYZ()[2]);
-                System.out.println("Point2:"+renderedTri.p[2].getXYZ()[0]+" | "+renderedTri.p[2].getXYZ()[2]);
 
                 lines.add(new double[]{renderedTri.p[0].getXYZ()[0],renderedTri.p[0].getXYZ()[2], renderedTri.p[1].getXYZ()[0], renderedTri.p[1].getXYZ()[2]});
                 lines.add(new double[]{renderedTri.p[1].getXYZ()[0],renderedTri.p[1].getXYZ()[2], renderedTri.p[2].getXYZ()[0], renderedTri.p[2].getXYZ()[2]});
                 lines.add(new double[]{renderedTri.p[2].getXYZ()[0],renderedTri.p[2].getXYZ()[2], renderedTri.p[0].getXYZ()[0], renderedTri.p[0].getXYZ()[2]});
 
-
                 renderedTri = null;
-
             }
         }
         panel.drawLines(lines);
