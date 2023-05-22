@@ -19,11 +19,6 @@ public class renderTools {
         return output;
     }
 
-    //gets the normal of a triangle face (a vector that points in the direction the triangle is facing) used for deciding if triangles get rendered and shading
-    public static double[] getNormal(Triangle face){
-        double[] normal = new double[3];
-        return normal;
-    }
 
     public static double[] addVector(double[] v1, double[] v2){
         return new double[]{v1[0]+v2[0],v1[1]+v2[1],v1[2]+v2[2]};
@@ -41,9 +36,41 @@ public class renderTools {
         return new double[]{v1[0]/number,v1[1]/number,v1[2]/number};
     }
 
-    //says how similar 2 normalized vectors are for -1.0 beeing opposite directions to 1.0 beeing the same vector
+    //gets the normal of a triangle face (a vector that points in the direction the triangle is facing) used for deciding if triangles get rendered and shading
+    public static double[] getNormal(Triangle face){
+        double[] normal = new double[3];
+        return normal;
+    }
+
+
+    //says how similar 2 normalized vectors are for -1.0 being opposite directions to 1.0 being the same vector
     public static double dotProduct(double[] v1, double[] v2){
         return v1[0]*v2[0]+v1[1]*v2[1]+v1[2]*v2[2];
+    }
+    public static double vectorLength(double[] v){
+        return Math.sqrt(dotProduct(v,v));
+    }
+
+    //normalizes the vector
+    public static double[] normalizeVector(double[] v){
+        double length = vectorLength(v);
+        return new double[]{v[0]/length,v[1]/length,v[2]/length};
+    }
+
+    //generates a vector perpendicular to the 2 input vectors
+    public static double[] crossProduct(double[] v1, double[] v2){
+        double[] returnVector = new double[3];
+        returnVector[0] = v1[1]*v2[2]-v1[2]*v2[1];
+        returnVector[1] = v1[2]*v2[0]-v1[0]*v2[2];
+        returnVector[2] = v1[0]*v2[1]-v1[1]*v2[0];
+        return returnVector;
+    }
+
+    //dot Product + automatic normalization
+    public static double normDotProduct(double[] v1, double[] v2){
+        double[] normV1 = normalizeVector(v1);
+        double[] normV2 = normalizeVector(v2);
+        return dotProduct(normV1, normV2);
     }
 
 }

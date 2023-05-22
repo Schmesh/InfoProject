@@ -28,6 +28,7 @@ public class Window {
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         lines = new ArrayList();
+        //maximizes the window
         window.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
