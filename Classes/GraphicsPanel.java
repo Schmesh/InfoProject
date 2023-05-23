@@ -31,7 +31,7 @@ public class GraphicsPanel extends JPanel {
         g2d.setStroke(new BasicStroke(1));
         //AlphaComposite alphaComposite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, (float)0.5);
         //g2d.setComposite(alphaComposite);
-
+        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         int lineArraySize = lineArray.size();
         for (int i = 0; i < lineArraySize;i++){
             g2d.drawLine((int)Math.round(lineArray.get(i)[0]),(int)Math.round(lineArray.get(i)[1]),(int)Math.round(lineArray.get(i)[2]),(int)Math.round(lineArray.get(i)[3]));

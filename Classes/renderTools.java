@@ -36,11 +36,7 @@ public class renderTools {
         return new double[]{v1[0]/number,v1[1]/number,v1[2]/number};
     }
 
-    //gets the normal of a triangle face (a vector that points in the direction the triangle is facing) used for deciding if triangles get rendered and shading
-    public static double[] getNormal(Triangle face){
-        double[] normal = new double[3];
-        return normal;
-    }
+
 
 
     //says how similar 2 normalized vectors are for -1.0 being opposite directions to 1.0 being the same vector
@@ -63,14 +59,23 @@ public class renderTools {
         returnVector[0] = v1[1]*v2[2]-v1[2]*v2[1];
         returnVector[1] = v1[2]*v2[0]-v1[0]*v2[2];
         returnVector[2] = v1[0]*v2[1]-v1[1]*v2[0];
-        return returnVector;
+        return multVector(returnVector,-1);
+    }
+
+    //gets the normal of a triangle face (a vector that points in the direction the triangle is facing) used for deciding if triangles get rendered and shading
+    public static double[] getNormal(Triangle face){
+        double[] v1 = subVector(face.p[1].getXYZ(), face.p[0].getXYZ());
+        double[] v2 = subVector(face.p[2].getXYZ(), face.p[0].getXYZ());
+
+        return crossProduct(v1,v2);
     }
 
     //dot Product + automatic normalization
     public static double normDotProduct(double[] v1, double[] v2){
         double[] normV1 = normalizeVector(v1);
         double[] normV2 = normalizeVector(v2);
+        System.out.println(normV1[0]+","+normV1[1]+","+normV1[2]+"|"+normV2[0]+","+normV2[1]+","+normV2[2]);
+        //System.out.println(dotProduct(normV1, normV2));
         return dotProduct(normV1, normV2);
     }
-
 }

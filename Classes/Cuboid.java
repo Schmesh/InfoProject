@@ -15,15 +15,24 @@ public class Cuboid extends Object{
         Point[][] trianglePoints = new Point[12][3];
 
 
-        //Back (positive Y)
-        trianglePoints[6][0] = new Point(size[0]*0.5+pos[0],size[1]*0.5+pos[1], size[2]*-0.5+pos[2]);//++-
-        trianglePoints[6][1] = new Point(size[0]*0.5+pos[0],size[1]*0.5+pos[1], size[2]*0.5+pos[2]);//+++
-        trianglePoints[6][2] = new Point(size[0]*-0.5+pos[0],size[1]*0.5+pos[1], size[2]*-0.5+pos[2]);//-+-
-        cuboidTriangles[6] = new Triangle(trianglePoints[6]);
-        trianglePoints[7][0] = new Point(size[0]*0.5+pos[0],size[1]*0.5+pos[1], size[2]*0.5+pos[2]);//+++
-        trianglePoints[7][1] = new Point(size[0]*-0.5+pos[0],size[1]*0.5+pos[1], size[2]*0.5+pos[2]);//-++
-        trianglePoints[7][2] = new Point(size[0]*-0.5+pos[0],size[1]*0.5+pos[1], size[2]*-0.5+pos[2]);//-+-
-        cuboidTriangles[7] = new Triangle(trianglePoints[7]);
+        //Bottom (negative Z)
+        trianglePoints[10][0] = new Point(size[0]*-0.5+pos[0],size[1]*-0.5+pos[1], size[2]*-0.5+pos[2]);//---
+        trianglePoints[10][1] = new Point(size[0]*0.5+pos[0],size[1]*-0.5+pos[1], size[2]*-0.5+pos[2]);//+--
+        trianglePoints[10][2] = new Point(size[0]*-0.5+pos[0],size[1]*+0.5+pos[1], size[2]*-0.5+pos[2]);//-+-
+        cuboidTriangles[10] = new Triangle(trianglePoints[10]);
+        trianglePoints[11][0] = new Point(size[0]*0.5+pos[0],size[1]*-0.5+pos[1], size[2]*-0.5+pos[2]);//+--
+        trianglePoints[11][1] = new Point(size[0]*0.5+pos[0],size[1]*0.5+pos[1], size[2]*-0.5+pos[2]);//++-
+        trianglePoints[11][2] = new Point(size[0]*-0.5+pos[0],size[1]*0.5+pos[1], size[2]*-0.5+pos[2]);//-+-
+        cuboidTriangles[11] = new Triangle(trianglePoints[11]);
+        //Left (negative X)
+        trianglePoints[2][0] = new Point(size[0]*-0.5+pos[0],size[1]*0.5+pos[1], size[2]*-0.5+pos[2]);//-+-
+        trianglePoints[2][1] = new Point(size[0]*-0.5+pos[0],size[1]*0.5+pos[1], size[2]*0.5+pos[2]);//-++
+        trianglePoints[2][2] = new Point(size[0]*-0.5+pos[0],size[1]*-0.5+pos[1], size[2]*-0.5+pos[2]);//---
+        cuboidTriangles[2] = new Triangle(trianglePoints[2]);
+        trianglePoints[3][0] = new Point(size[0]*-0.5+pos[0],size[1]*0.5+pos[1], size[2]*0.5+pos[2]);//-++
+        trianglePoints[3][1] = new Point(size[0]*-0.5+pos[0],size[1]*-0.5+pos[1], size[2]*0.5+pos[2]);//--+
+        trianglePoints[3][2] = new Point(size[0]*-0.5+pos[0],size[1]*-0.5+pos[1], size[2]*-0.5+pos[2]);//---
+        cuboidTriangles[3] = new Triangle(trianglePoints[3]);
         //Right (positive x)
         trianglePoints[0][0] = new Point(size[0]*0.5+pos[0],size[1]*-0.5+pos[1], size[2]*-0.5+pos[2]);//+--
         trianglePoints[0][1] = new Point(size[0]*0.5+pos[0],size[1]*-0.5+pos[1], size[2]*0.5+pos[2]);//+-+
@@ -33,24 +42,6 @@ public class Cuboid extends Object{
         trianglePoints[1][1] = new Point(size[0]*0.5+pos[0],size[1]*0.5+pos[1], size[2]*0.5+pos[2]);//+++
         trianglePoints[1][2] = new Point(size[0]*0.5+pos[0],size[1]*0.5+pos[1], size[2]*-0.5+pos[2]);//++-
         cuboidTriangles[1] = new Triangle(trianglePoints[1]);
-        //Top (positive Z)
-        trianglePoints[8][0] = new Point(size[0]*-0.5+pos[0],size[1]*0.5+pos[1], size[2]*0.5+pos[2]);//-++
-        trianglePoints[8][1] = new Point(size[0]*0.5+pos[0],size[1]*0.5+pos[1], size[2]*0.5+pos[2]);//+++
-        trianglePoints[8][2] = new Point(size[0]*-0.5+pos[0],size[1]*-0.5+pos[1], size[2]*0.5+pos[2]);//--+
-        cuboidTriangles[8] = new Triangle(trianglePoints[8]);
-        trianglePoints[9][0] = new Point(size[0]*0.5+pos[0],size[1]*0.5+pos[1], size[2]*0.5+pos[2]);//+++
-        trianglePoints[9][1] = new Point(size[0]*0.5+pos[0],size[1]*-0.5+pos[1], size[2]*0.5+pos[2]);//+-+
-        trianglePoints[9][2] = new Point(size[0]*-0.5+pos[0],size[1]*-0.5+pos[1], size[2]*0.5+pos[2]);//--+
-        cuboidTriangles[9] = new Triangle(trianglePoints[9]);
-        //Left (negative X)
-        trianglePoints[2][0] = new Point(size[0]*-0.5+pos[0],size[1]*0.5+pos[1], size[2]*-0.5+pos[2]);//-+-
-        trianglePoints[2][1] = new Point(size[0]*-0.5+pos[0],size[1]*0.5+pos[1], size[2]*0.5+pos[2]);//-++
-        trianglePoints[2][2] = new Point(size[0]*-0.5+pos[0],size[1]*-0.5+pos[1], size[2]*-0.5+pos[2]);//---
-        cuboidTriangles[2] = new Triangle(trianglePoints[2]);
-        trianglePoints[3][0] = new Point(size[0]*-0.5+pos[0],size[1]*-0.5+pos[1], size[2]*0.5+pos[2]);//-++
-        trianglePoints[3][1] = new Point(size[0]*-0.5+pos[0],size[1]*-0.5+pos[1], size[2]*0.5+pos[2]);//--+
-        trianglePoints[3][2] = new Point(size[0]*-0.5+pos[0],size[1]*-0.5+pos[1], size[2]*-0.5+pos[2]);//---
-        cuboidTriangles[3] = new Triangle(trianglePoints[3]);
         //Front (negative Y)
         trianglePoints[4][0] = new Point(size[0]*-0.5+pos[0],size[1]*-0.5+pos[1], size[2]*-0.5+pos[2]);//---
         trianglePoints[4][1] = new Point(size[0]*-0.5+pos[0],size[1]*-0.5+pos[1], size[2]*0.5+pos[2]);//--+
@@ -60,18 +51,26 @@ public class Cuboid extends Object{
         trianglePoints[5][1] = new Point(size[0]*0.5+pos[0],size[1]*-0.5+pos[1], size[2]*0.5+pos[2]);//+-+
         trianglePoints[5][2] = new Point(size[0]*0.5+pos[0],size[1]*-0.5+pos[1], size[2]*-0.5+pos[2]);//+--
         cuboidTriangles[5] = new Triangle(trianglePoints[5]);
-
-
-        //Bottom (negative Z)
-        trianglePoints[10][0] = new Point(size[0]*-0.5+pos[0],size[1]*-0.5+pos[1], size[2]*-0.5+pos[2]);//---
-        trianglePoints[10][1] = new Point(size[0]*-0.5+pos[0],size[1]*0.5+pos[1], size[2]*-0.5+pos[2]);//-+-
-        trianglePoints[10][2] = new Point(size[0]*0.5+pos[0],size[1]*-0.5+pos[1], size[2]*-0.5+pos[2]);//+--
-        cuboidTriangles[10] = new Triangle(trianglePoints[10]);
-        trianglePoints[11][0] = new Point(size[0]*-0.5+pos[0],size[1]*0.5+pos[1], size[2]*-0.5+pos[2]);//-+-
-        trianglePoints[11][1] = new Point(size[0]*0.5+pos[0],size[1]*0.5+pos[1], size[2]*-0.5+pos[2]);//++-
-        trianglePoints[11][2] = new Point(size[0]*0.5+pos[0],size[1]*-0.5+pos[1], size[2]*-0.5+pos[2]);//+--
-        cuboidTriangles[11] = new Triangle(trianglePoints[11]);
-
+        //Back (positive Y)
+        trianglePoints[6][0] = new Point(size[0]*0.5+pos[0],size[1]*0.5+pos[1], size[2]*-0.5+pos[2]);//++-
+        trianglePoints[6][1] = new Point(size[0]*0.5+pos[0],size[1]*0.5+pos[1], size[2]*0.5+pos[2]);//+++
+        trianglePoints[6][2] = new Point(size[0]*-0.5+pos[0],size[1]*0.5+pos[1], size[2]*-0.5+pos[2]);//-+-
+        cuboidTriangles[6] = new Triangle(trianglePoints[6]);
+        trianglePoints[7][0] = new Point(size[0]*0.5+pos[0],size[1]*0.5+pos[1], size[2]*0.5+pos[2]);//+++
+        trianglePoints[7][1] = new Point(size[0]*-0.5+pos[0],size[1]*0.5+pos[1], size[2]*0.5+pos[2]);//-++
+        trianglePoints[7][2] = new Point(size[0]*-0.5+pos[0],size[1]*0.5+pos[1], size[2]*-0.5+pos[2]);//-+-
+        cuboidTriangles[7] = new Triangle(trianglePoints[7]);
+        //Top (positive Z)
+        trianglePoints[8][0] = new Point(size[0]*-0.5+pos[0],size[1]*0.5+pos[1], size[2]*0.5+pos[2]);//-++
+        trianglePoints[8][1] = new Point(size[0]*0.5+pos[0],size[1]*0.5+pos[1], size[2]*0.5+pos[2]);//+++
+        trianglePoints[8][2] = new Point(size[0]*-0.5+pos[0],size[1]*-0.5+pos[1], size[2]*0.5+pos[2]);//--+
+        cuboidTriangles[8] = new Triangle(trianglePoints[8]);
+        trianglePoints[9][0] = new Point(size[0]*0.5+pos[0],size[1]*0.5+pos[1], size[2]*0.5+pos[2]);//+++
+        trianglePoints[9][1] = new Point(size[0]*0.5+pos[0],size[1]*-0.5+pos[1], size[2]*0.5+pos[2]);//+-+
+        trianglePoints[9][2] = new Point(size[0]*-0.5+pos[0],size[1]*-0.5+pos[1], size[2]*0.5+pos[2]);//--+
+        cuboidTriangles[9] = new Triangle(trianglePoints[9]);
+        /*
+        */
         this.setTriangles(cuboidTriangles);
 
 

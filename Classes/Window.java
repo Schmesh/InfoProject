@@ -40,7 +40,7 @@ public class Window {
         int trianglesLength = object.getTriangles().length;
 
         for (int i = 0; i < trianglesLength; i++) {
-            if (object.getTriangles()[i] != null){
+            if (object.getTriangles()[i] != null){ // && renderTools.normDotProduct(renderTools.getNormal(object.getTriangles()[i]),renderTools.subVector(object.getTriangles()[i].p[0].getXYZ(),new double[]{0,0,0})) < 0 ){
                 Triangle renderedTri = new Triangle(new Point[3]);
                 renderedTri.p[0] = new Point(renderTools.project3d2d(object.getTriangles()[i].p[0].getXYZ(),fov,distanceToScreen,viewDistance,panel.getHeight(),panel.getWidth()));
                 renderedTri.p[1] = new Point(renderTools.project3d2d(object.getTriangles()[i].p[1].getXYZ(),fov,distanceToScreen,viewDistance,panel.getHeight(),panel.getWidth()));
@@ -49,6 +49,8 @@ public class Window {
                 lines.add(new double[]{renderedTri.p[0].getXYZ()[0],renderedTri.p[0].getXYZ()[2], renderedTri.p[1].getXYZ()[0], renderedTri.p[1].getXYZ()[2]});
                 lines.add(new double[]{renderedTri.p[1].getXYZ()[0],renderedTri.p[1].getXYZ()[2], renderedTri.p[2].getXYZ()[0], renderedTri.p[2].getXYZ()[2]});
                 lines.add(new double[]{renderedTri.p[2].getXYZ()[0],renderedTri.p[2].getXYZ()[2], renderedTri.p[0].getXYZ()[0], renderedTri.p[0].getXYZ()[2]});
+                //double[] normalEnd = renderTools.project3d2d(    renderTools.addVector(object.getTriangles()[i].p[0].getXYZ() , renderTools.getNormal(object.getTriangles()[i])),fov,distanceToScreen,viewDistance,panel.getHeight(),panel.getWidth());
+                //lines.add(new double[]{renderedTri.p[0].getXYZ()[0],renderedTri.p[0].getXYZ()[2],normalEnd[0],normalEnd[2]});
 
                 renderedTri = null;
             }
