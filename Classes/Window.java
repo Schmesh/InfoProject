@@ -10,8 +10,8 @@ public class Window {
     JFrame window;
     public GraphicsPanel panel;
     private double fov = 90;
-    private double distanceToScreen = 0.1;
-    private double viewDistance = 1000;
+    //private double distanceToScreen = 0.1;
+    //private double viewDistance = 1000;
 
     private ArrayList<double[]> lines;
 
@@ -35,16 +35,16 @@ public class Window {
 
 
 
-    public void renderObjectWireframe(Object object) {
+    public void renderObjectWireframe(Object object, Camera cam) {
 
         int trianglesLength = object.getTriangles().length;
 
         for (int i = 0; i < trianglesLength; i++) {
             if (object.getTriangles()[i] != null){ // && renderTools.normDotProduct(renderTools.getNormal(object.getTriangles()[i]),renderTools.subVector(object.getTriangles()[i].p[0].getXYZ(),new double[]{0,0,0})) < 0 ){
                 Triangle renderedTri = new Triangle(new Point[3]);
-                renderedTri.p[0] = new Point(renderTools.project3d2d(object.getTriangles()[i].p[0].getXYZ(),fov,distanceToScreen,viewDistance,panel.getHeight(),panel.getWidth()));
-                renderedTri.p[1] = new Point(renderTools.project3d2d(object.getTriangles()[i].p[1].getXYZ(),fov,distanceToScreen,viewDistance,panel.getHeight(),panel.getWidth()));
-                renderedTri.p[2] = new Point(renderTools.project3d2d(object.getTriangles()[i].p[2].getXYZ(),fov,distanceToScreen,viewDistance,panel.getHeight(),panel.getWidth()));
+                renderedTri.p[0] = new Point(renderTools.project3d2d(renderTools.subVector(object.getTriangles()[i].p[0].getXYZ(),cam.pos ) ,cam.fov,panel.getHeight(),panel.getWidth()));
+                renderedTri.p[1] = new Point(renderTools.project3d2d(renderTools.subVector(object.getTriangles()[i].p[1].getXYZ(),cam.pos ) ,cam.fov,panel.getHeight(),panel.getWidth()));
+                renderedTri.p[2] = new Point(renderTools.project3d2d(renderTools.subVector(object.getTriangles()[i].p[2].getXYZ(),cam.pos ) ,cam.fov,panel.getHeight(),panel.getWidth()));
 
                 lines.add(new double[]{renderedTri.p[0].getXYZ()[0],renderedTri.p[0].getXYZ()[2], renderedTri.p[1].getXYZ()[0], renderedTri.p[1].getXYZ()[2]});
                 lines.add(new double[]{renderedTri.p[1].getXYZ()[0],renderedTri.p[1].getXYZ()[2], renderedTri.p[2].getXYZ()[0], renderedTri.p[2].getXYZ()[2]});

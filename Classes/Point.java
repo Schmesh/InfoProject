@@ -46,4 +46,9 @@ public class Point {
         xyz[1] += dy;
         xyz[2] += dz;
     }
+    public void move(double[] distance){
+        xyz[0] += distance[0];
+        xyz[1] += distance[1];
+        xyz[2] += distance[2];
+    }
 }

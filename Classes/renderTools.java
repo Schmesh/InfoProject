@@ -3,7 +3,7 @@ package Classes;
 public class renderTools {
 
     //projects 3d to 2d coordinate (y is not used for rendering but for optimizations later on)
-    public static double[] project3d2d(double[] inputCoordinate, double fov, double distanceToScreen, double viewDistance, double screenHeight, double screenWidth){
+    public static double[] project3d2d(double[] inputCoordinate, double fov, double screenHeight, double screenWidth){ //, double distanceToScreen, double viewDistance
         double[] output = new double[3];
 
         output[0] = ((screenHeight/screenWidth)*( 1/ Math.tan( Math.toRadians(fov)/2 ) )*inputCoordinate[0]) / inputCoordinate[1];

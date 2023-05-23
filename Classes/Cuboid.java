@@ -79,5 +79,14 @@ public class Cuboid extends Object{
         cuboidTriangles = null;
         trianglePoints = null;
     }
+    public void move(double[] distance){
+        int triangleLength = getTriangles().length;
+        for (int i = 0; i < triangleLength; i++){
+            getTriangles()[i].p[0].move(distance);
+            getTriangles()[i].p[1].move(distance);
+            getTriangles()[i].p[2].move(distance);
+            renderTools.addVector(pos,distance);
+        }
+    }
 }
 
