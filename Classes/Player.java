@@ -6,7 +6,7 @@ import java.awt.event.KeyListener;
 public class Player extends Entity implements KeyListener {
 
     Player(){
-        super(new Hitbox(new Point(0,0,0), new double[]{0,0,0}),true);
+        super(new Hitbox(new Point(0,0,1), new double[]{0.5,0.5,2}),true);
     }
 
     @Override

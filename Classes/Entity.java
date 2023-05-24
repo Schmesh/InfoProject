@@ -33,11 +33,12 @@ public class Entity extends PhysicsObject{
         return velocities;
     }
 
-    public void setAccelerationX(double accelerationX){accelerations[0] = accelerationX;}
-    public void setAccelerationY(double accelerationY){accelerations[1] = accelerationY;}
+    //public void setAccelerationX(double accelerationX){accelerations[0] = accelerationX;}
+    //public void setAccelerationY(double accelerationY){accelerations[1] = accelerationY;}
     public void setAccelerationZ(double accelerationZ){accelerations[2] = accelerationZ;}
-    public void addAccelerationX(double accelerationX){accelerations[0] +=accelerationX;}
-    public void addAccelerationY(double accelerationY){accelerations[1] +=accelerationY;}
+
+    //public void addAccelerationX(double accelerationX){accelerations[0] +=accelerationX;}
+    //public void addAccelerationY(double accelerationY){accelerations[1] +=accelerationY;}
     public void addAccelerationZ(double accelerationZ){accelerations[2] +=accelerationZ;}
     public double[] getAccelerations(){
         return accelerations;
@@ -60,29 +61,25 @@ public class Entity extends PhysicsObject{
         velocities[1]=Math.sin(Math.toRadians(direction))*speed;
     }
 
+    public void updateVelocityXY(){
+        velocities[0]=Math.cos(Math.toRadians(direction))*speed;
+        velocities[1]=Math.sin(Math.toRadians(direction))*speed;
+    }
+
     public void applyCollision(Hitbox hitbox){
-        Point p1 = hitbox.getPos();
-        Point p2 = this.hitbox.getPos();
-        double dX = Math.abs(hitbox.getXyzSize()[0])-Math.abs(this.hitbox.getXyzSize()[0]);
-        double dY = Math.abs(hitbox.getXyzSize()[1])-Math.abs(this.hitbox.getXyzSize()[1]);
-        double dZ = Math.abs(hitbox.getXyzSize()[2])-Math.abs(this.hitbox.getXyzSize()[2]);
+        double dX = Math.abs(hitbox.getPos().getXYZ()[0]-this.hitbox.getPos().getXYZ()[0]);
+        double dY = Math.abs(hitbox.getPos().getXYZ()[1]-this.hitbox.getPos().getXYZ()[1]);
+        double dZ = Math.abs(hitbox.getPos().getXYZ()[2]-this.hitbox.getPos().getXYZ()[2]);
         double distance = Math.sqrt(dX*dX+dY*dY+dZ*dZ);
         if (hitbox.getDiameter()/2+this.hitbox.getDiameter()/2>distance){
             while (this.hitbox.checkCollision(hitbox)){
-                double dx = 0.001;
-                double dy = 0.001;
-                double dz = 0.001;
-                if(this.hitbox.getPos().getXYZ()[0]<hitbox.getPos().getXYZ()[0]){
-                    dx=-0.001;
-                }
-                if(this.hitbox.getPos().getXYZ()[1]<hitbox.getPos().getXYZ()[1]){
-                    dy=-0.001;
-                }
-                if(this.hitbox.getPos().getXYZ()[2]<hitbox.getPos().getXYZ()[2]){
-                    dz=-0.001;
-                }
-                move(dx,dy,dz);
+                this.move(Math.signum(this.getVelocities()[0]*0.01), Math.signum(this.getVelocities()[1]*0.01), Math.signum(this.getVelocities()[2]*0.01));
             }
         }
+    }
+
+    public void updateEntity(int time){
+        updateVelocityXY();
+        updatePos(time);
     }
 }
