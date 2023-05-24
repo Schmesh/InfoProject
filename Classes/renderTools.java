@@ -78,4 +78,22 @@ public class renderTools {
         //System.out.println(dotProduct(normV1, normV2));
         return dotProduct(normV1, normV2);
     }
+
+
+
+    public static double[] rotatePointOriginZ(double[] point, double angleInDeg){
+        double[] returnPoint = new double[3];
+        returnPoint[0] = point[0]*(Math.cos(Math.toRadians(angleInDeg))) + point[1]*(Math.sin(Math.toRadians(angleInDeg)));
+        returnPoint[1] = point[0]*(-Math.sin(Math.toRadians(angleInDeg))) + point[1]*(Math.cos(Math.toRadians(angleInDeg)));
+        returnPoint[2] = point[2];
+        return returnPoint;
+    }
+
+    public static double[] rotatePointOriginX(double[] point, double angleInDeg){
+        double[] returnPoint = new double[3];
+        returnPoint[0] = point[0];
+        returnPoint[1] = point[1]*(Math.cos(Math.toRadians(angleInDeg))) + point[2]*(Math.sin(Math.toRadians(angleInDeg)));
+        returnPoint[2] = point[1]*(-Math.sin(Math.toRadians(angleInDeg))) + point[2]*(Math.cos(Math.toRadians(angleInDeg)));
+        return returnPoint;
+    }
 }

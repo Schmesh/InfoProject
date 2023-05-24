@@ -88,5 +88,15 @@ public class Cuboid extends Object{
             renderTools.addVector(pos,distance);
         }
     }
+
+    //public void rotateZ(double[] rot){
+    //    int triangleLength = getTriangles().length;
+    //    for (int i =0; i < triangleLength; i++){
+    //        getTriangles()[i].p[0] = renderTools.rotatePointOriginZ()
+    //    }
+    //
+    //
+    //}
+
 }
 

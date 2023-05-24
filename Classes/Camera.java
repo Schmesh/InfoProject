@@ -13,4 +13,8 @@ public class Camera {
     public void move(double[] distance){
         pos = renderTools.addVector(pos,distance);
     }
+
+    public void rotate(double[] rotation){
+        rot = renderTools.addVector(rot,rotation);
+    }
 }
