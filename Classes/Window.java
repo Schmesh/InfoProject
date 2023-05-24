@@ -61,17 +61,22 @@ public class Window {
 
 
 
+                    Triangle renderedTri = new Triangle(new Point[3]);
+                    renderedTri.p[0] = new Point(renderTools.project3d2d(translatedTri.p[0].getXYZ() ,cam.fov,panel.getHeight(),panel.getWidth()));
+                    renderedTri.p[1] = new Point(renderTools.project3d2d(translatedTri.p[1].getXYZ() ,cam.fov,panel.getHeight(),panel.getWidth()));
+                    renderedTri.p[2] = new Point(renderTools.project3d2d(translatedTri.p[2].getXYZ() ,cam.fov,panel.getHeight(),panel.getWidth()));
 
-                Triangle renderedTri = new Triangle(new Point[3]);
-                renderedTri.p[0] = new Point(renderTools.project3d2d(translatedTri.p[0].getXYZ() ,cam.fov,panel.getHeight(),panel.getWidth()));
-                renderedTri.p[1] = new Point(renderTools.project3d2d(translatedTri.p[1].getXYZ() ,cam.fov,panel.getHeight(),panel.getWidth()));
-                renderedTri.p[2] = new Point(renderTools.project3d2d(translatedTri.p[2].getXYZ() ,cam.fov,panel.getHeight(),panel.getWidth()));
+                    //if y > 0 only temporary approach until clipping is implemented
 
-                lines.add(new double[]{renderedTri.p[0].getXYZ()[0],renderedTri.p[0].getXYZ()[2], renderedTri.p[1].getXYZ()[0], renderedTri.p[1].getXYZ()[2]});
-                lines.add(new double[]{renderedTri.p[1].getXYZ()[0],renderedTri.p[1].getXYZ()[2], renderedTri.p[2].getXYZ()[0], renderedTri.p[2].getXYZ()[2]});
-                lines.add(new double[]{renderedTri.p[2].getXYZ()[0],renderedTri.p[2].getXYZ()[2], renderedTri.p[0].getXYZ()[0], renderedTri.p[0].getXYZ()[2]});
-                //double[] normalEnd = renderTools.project3d2d(    renderTools.addVector(object.getTriangles()[i].p[0].getXYZ() , renderTools.getNormal(object.getTriangles()[i])),fov,distanceToScreen,viewDistance,panel.getHeight(),panel.getWidth());
-                //lines.add(new double[]{renderedTri.p[0].getXYZ()[0],renderedTri.p[0].getXYZ()[2],normalEnd[0],normalEnd[2]});
+                    if (translatedTri.p[0].getXYZ()[1] > 0&&translatedTri.p[1].getXYZ()[1] > 0&&translatedTri.p[2].getXYZ()[1] > 0){
+                    lines.add(new double[]{renderedTri.p[0].getXYZ()[0],renderedTri.p[0].getXYZ()[2], renderedTri.p[1].getXYZ()[0], renderedTri.p[1].getXYZ()[2]});
+                    lines.add(new double[]{renderedTri.p[1].getXYZ()[0],renderedTri.p[1].getXYZ()[2], renderedTri.p[2].getXYZ()[0], renderedTri.p[2].getXYZ()[2]});
+                    lines.add(new double[]{renderedTri.p[2].getXYZ()[0],renderedTri.p[2].getXYZ()[2], renderedTri.p[0].getXYZ()[0], renderedTri.p[0].getXYZ()[2]});
+                    //double[] normalEnd = renderTools.project3d2d(    renderTools.addVector(object.getTriangles()[i].p[0].getXYZ() , renderTools.getNormal(object.getTriangles()[i])),fov,distanceToScreen,viewDistance,panel.getHeight(),panel.getWidth());
+                    //lines.add(new double[]{renderedTri.p[0].getXYZ()[0],renderedTri.p[0].getXYZ()[2],normalEnd[0],normalEnd[2]});
+
+                    }
+
 
                 translatedTri = null;
                 renderedTri = null;

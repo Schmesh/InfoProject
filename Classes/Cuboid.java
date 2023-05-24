@@ -88,15 +88,36 @@ public class Cuboid extends Object{
             renderTools.addVector(pos,distance);
         }
     }
+    public void rotateX(double angle){
+        int triangleLength = getTriangles().length;
+        for (int i =0; i < triangleLength; i++){
+            getTriangles()[i].p[0].setXyz(renderTools.rotateAroundPointX(getTriangles()[i].p[0].getXYZ(),pos,angle));
+            getTriangles()[i].p[1].setXyz(renderTools.rotateAroundPointX(getTriangles()[i].p[1].getXYZ(),pos,angle));
+            getTriangles()[i].p[2].setXyz(renderTools.rotateAroundPointX(getTriangles()[i].p[2].getXYZ(),pos,angle));
+        }
 
-    //public void rotateZ(double[] rot){
-    //    int triangleLength = getTriangles().length;
-    //    for (int i =0; i < triangleLength; i++){
-    //        getTriangles()[i].p[0] = renderTools.rotatePointOriginZ()
-    //    }
-    //
-    //
-    //}
+
+    }
+    public void rotateY(double angle){
+        int triangleLength = getTriangles().length;
+        for (int i =0; i < triangleLength; i++){
+            getTriangles()[i].p[0].setXyz(renderTools.rotateAroundPointY(getTriangles()[i].p[0].getXYZ(),pos,angle));
+            getTriangles()[i].p[1].setXyz(renderTools.rotateAroundPointY(getTriangles()[i].p[1].getXYZ(),pos,angle));
+            getTriangles()[i].p[2].setXyz(renderTools.rotateAroundPointY(getTriangles()[i].p[2].getXYZ(),pos,angle));
+        }
+
+
+    }
+    public void rotateZ(double angle){
+        int triangleLength = getTriangles().length;
+        for (int i =0; i < triangleLength; i++){
+            getTriangles()[i].p[0].setXyz(renderTools.rotateAroundPointZ(getTriangles()[i].p[0].getXYZ(),pos,angle));
+            getTriangles()[i].p[1].setXyz(renderTools.rotateAroundPointZ(getTriangles()[i].p[1].getXYZ(),pos,angle));
+            getTriangles()[i].p[2].setXyz(renderTools.rotateAroundPointZ(getTriangles()[i].p[2].getXYZ(),pos,angle));
+        }
+
+
+    }
 
 }
 

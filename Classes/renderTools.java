@@ -7,7 +7,7 @@ public class renderTools {
         double[] output = new double[3];
 
         output[0] = ((screenHeight/screenWidth)*( 1/ Math.tan( Math.toRadians(fov)/2 ) )*inputCoordinate[0]) / inputCoordinate[1];
-        output[1] = 0;  //inputCoordinate[1]*(viewDistance/(viewDistance-distanceToScreen))-((viewDistance*distanceToScreen)/(viewDistance-distanceToScreen)); y calc disabled for now
+        output[1] = 0;  //inputCoordinate[1]*(viewDistance/(viewDistance-distanceToScreen))-((viewDistance*distanceToScreen)/(viewDistance-distanceToScreen)); //y calc disabled for now
         output[2] = ( ( 1/ Math.tan( Math.toRadians(fov)/2 ) ) * -inputCoordinate[2]) / inputCoordinate[1];
 
         output[0] += 1;
@@ -94,6 +94,44 @@ public class renderTools {
         returnPoint[0] = point[0];
         returnPoint[1] = point[1]*(Math.cos(Math.toRadians(angleInDeg))) + point[2]*(Math.sin(Math.toRadians(angleInDeg)));
         returnPoint[2] = point[1]*(-Math.sin(Math.toRadians(angleInDeg))) + point[2]*(Math.cos(Math.toRadians(angleInDeg)));
+        return returnPoint;
+    }
+
+    public static double[] rotatePointOriginY(double[] point, double angleInDeg){
+        double[] returnPoint = new double[3];
+        returnPoint[0] = point[0]*(Math.cos(Math.toRadians(angleInDeg))) + point[2]*(-Math.sin(angleInDeg));
+        returnPoint[1] = point[1];
+        returnPoint[2] = point[0]*(-Math.sin(Math.toRadians(angleInDeg))) + point[2]*(Math.cos(Math.toRadians(angleInDeg)));
+        return returnPoint;
+    }
+
+    public static double[] rotateAroundPointZ(double[] point, double[] pivot, double angleInDeg){
+        double[] originPoint = subVector(point,pivot);
+        double[] returnPoint = new double[3];
+        returnPoint[0] = originPoint[0]*(Math.cos(Math.toRadians(angleInDeg))) + originPoint[1]*(Math.sin(Math.toRadians(angleInDeg)));
+        returnPoint[1] = originPoint[0]*(-Math.sin(Math.toRadians(angleInDeg))) + originPoint[1]*(Math.cos(Math.toRadians(angleInDeg)));
+        returnPoint[2] = originPoint[2];
+        returnPoint = addVector(returnPoint,pivot);
+        return returnPoint;
+    }
+
+    public static double[] rotateAroundPointX(double[] point, double[] pivot, double angleInDeg){
+        double[] originPoint = subVector(point,pivot);
+        double[] returnPoint = new double[3];
+        returnPoint[0] = originPoint[0];
+        returnPoint[1] = originPoint[1]*(Math.cos(Math.toRadians(angleInDeg))) + originPoint[2]*(Math.sin(Math.toRadians(angleInDeg)));
+        returnPoint[2] = originPoint[1]*(-Math.sin(Math.toRadians(angleInDeg))) + originPoint[2]*(Math.cos(Math.toRadians(angleInDeg)));
+        returnPoint = addVector(returnPoint,pivot);
+        return returnPoint;
+    }
+
+    public static double[] rotateAroundPointY(double[] point, double[] pivot, double angleInDeg){
+        double[] originPoint = subVector(point,pivot);
+        double[] returnPoint = new double[3];
+        returnPoint[0] = originPoint[0]*(Math.cos(Math.toRadians(angleInDeg))) + originPoint[2]*(-Math.sin(angleInDeg));
+        returnPoint[1] = originPoint[1];
+        returnPoint[2] = originPoint[0]*(-Math.sin(Math.toRadians(angleInDeg))) + originPoint[2]*(Math.cos(Math.toRadians(angleInDeg)));
+        returnPoint = addVector(returnPoint,pivot);
         return returnPoint;
     }
 }
