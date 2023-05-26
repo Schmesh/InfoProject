@@ -3,12 +3,12 @@ package Classes;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class Player extends Entity implements KeyListener {
+public class Player extends Entity implements KeyListener, MouseMotionListener, MouseListener {
 
     Player(){
         super(new Hitbox(new Point(0,0,1), new double[]{0.5,0.5,2}),true);
     }
-
+//WASD-Steuerung für den Player
     @Override
     public void keyTyped(KeyEvent e) {
         int key = e.getKeyCode();
