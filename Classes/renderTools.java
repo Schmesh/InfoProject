@@ -6,9 +6,11 @@ public class renderTools {
     public static double[] project3d2d(double[] inputCoordinate, double fov, double screenHeight, double screenWidth){ //, double distanceToScreen, double viewDistance
         double[] output = new double[3];
 
-        output[0] = ((screenHeight/screenWidth)*( 1/ Math.tan( Math.toRadians(fov)/2 ) )*inputCoordinate[0]) / inputCoordinate[1];
+        double calc1 = 1/ Math.tan( Math.toRadians(fov)/2);
+
+        output[0] = ((screenHeight/screenWidth)*calc1*inputCoordinate[0]) / inputCoordinate[1];
         output[1] = 0;  //inputCoordinate[1]*(viewDistance/(viewDistance-distanceToScreen))-((viewDistance*distanceToScreen)/(viewDistance-distanceToScreen)); //y calc disabled for now
-        output[2] = ( ( 1/ Math.tan( Math.toRadians(fov)/2 ) ) * -inputCoordinate[2]) / inputCoordinate[1];
+        output[2] = ( calc1 * -inputCoordinate[2]) / inputCoordinate[1];
 
         output[0] += 1;
         output[2] += 1;
@@ -59,22 +61,23 @@ public class renderTools {
         returnVector[0] = v1[1]*v2[2]-v1[2]*v2[1];
         returnVector[1] = v1[2]*v2[0]-v1[0]*v2[2];
         returnVector[2] = v1[0]*v2[1]-v1[1]*v2[0];
-        return multVector(returnVector,-1);
+        return returnVector;
     }
 
     //gets the normal of a triangle face (a vector that points in the direction the triangle is facing) used for deciding if triangles get rendered and shading
     public static double[] getNormal(Triangle face){
-        double[] v1 = subVector(face.p[1].getXYZ(), face.p[0].getXYZ());
-        double[] v2 = subVector(face.p[2].getXYZ(), face.p[0].getXYZ());
+        double[] v1 = subVector(face.p[2].getXYZ(), face.p[0].getXYZ());
+        double[] v2 = subVector(face.p[1].getXYZ(), face.p[0].getXYZ());
 
-        return crossProduct(v1,v2);
+
+        return  renderTools.normalizeVector(crossProduct(v1,v2));
     }
 
     //dot Product + automatic normalization
     public static double normDotProduct(double[] v1, double[] v2){
         double[] normV1 = normalizeVector(v1);
         double[] normV2 = normalizeVector(v2);
-        System.out.println(normV1[0]+","+normV1[1]+","+normV1[2]+"|"+normV2[0]+","+normV2[1]+","+normV2[2]);
+        //System.out.println(normV1[0]+","+normV1[1]+","+normV1[2]+"|"+normV2[0]+","+normV2[1]+","+normV2[2]);
         //System.out.println(dotProduct(normV1, normV2));
         return dotProduct(normV1, normV2);
     }
@@ -134,4 +137,58 @@ public class renderTools {
         returnPoint = addVector(returnPoint,pivot);
         return returnPoint;
     }
+
+    //returns returns the point of intersection of a line and a triangle
+    public double[] getFaceLineIntersection(Triangle triangle, double[] lineP1, double[] lineP2){
+        double[] returnPoint;
+        double[] triNormal = getNormal(triangle);
+        double[] lineVector = subVector(lineP2,lineP1);
+        double normalLineDotProduct = normDotProduct(lineVector,triNormal);
+        if (Math.abs(normalLineDotProduct) < 1e-6){
+            return null;
+        }
+        double t = dotProduct(triNormal, subVector(triangle.p[0].getXYZ(),lineP2))/normalLineDotProduct;
+        if (t < 0 || t > 1) {
+            return null;
+        }
+        returnPoint = addVector(lineP1, multVector(lineVector,t));
+        if (isPointInsideTriangle(returnPoint,triangle)){
+            return returnPoint;
+        }else {
+            return null;
+        }
+    }
+
+    //returns the point of intersection of a line and an infinitely large plane
+    private double[] linePlaneIntersection(double[] lineP1, double[] lineP2, double[] planePos, double[] planeNormal){
+        double returnPoint[];
+        double[] lineVector = subVector(lineP2, lineP1);
+        if (Math.abs(normDotProduct(lineVector, planeNormal)) < 1e-6){
+            return null;
+        }
+        double[] planeLineDifference = subVector(planePos, lineP1);
+        double t = dotProduct(planeLineDifference, planeNormal) / dotProduct(lineVector, planeNormal);
+
+        returnPoint = addVector(lineP1, multVector(lineVector, t));
+        return returnPoint;
+    }
+
+    //returns the amount of a triangles points in front of infinitely large plane
+    public int trianglePlaneIntersection(){
+
+        return 1;
+    }
+
+    public boolean isPointInsideTriangle(double[] point, Triangle triangle){
+        double[] edge0 = subVector(triangle.p[1].getXYZ(),triangle.p[0].getXYZ());
+        double[] edge1 = subVector(triangle.p[2].getXYZ(),triangle.p[0].getXYZ());
+        double[] edge2 = subVector(point,triangle.p[0].getXYZ());
+
+        double[] cross0 = crossProduct(edge0,edge1);
+        double[] cross1 = crossProduct(edge1,edge2);
+        double[] cross2 = crossProduct(edge2,edge1);
+
+        return (dotProduct(cross0,cross1) >= 0) && (dotProduct(cross0,cross2) >= 0);
+    }
+
 }

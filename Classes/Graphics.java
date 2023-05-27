@@ -25,9 +25,10 @@ public class Graphics {
             testWindow.renderObjectWireframe(cuboidArray.get(i),c1);
         }
         cuboidArray.get(3).rotateZ(2.5);
-        c1.move(new double[]{0,0.006,0});//0.01,0.015,0.004
-        System.out.println(c1.pos[0]+","+c1.pos[1]+","+c1.pos[2]);
-        //c1.rotate(new double[]{-0.04,0,-0.15});//-0.04,0,-0.15
+        //c1.move(new double[]{0,0.006,0});
+        c1.move(new double[]{0.01,0.015,0.004});
+        //System.out.println(c1.pos[0]+","+c1.pos[1]+","+c1.pos[2]);
+        c1.rotate(new double[]{-0.04,0,-0.15});
     }
 
 
