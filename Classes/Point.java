@@ -41,6 +41,10 @@ public class Point {
         xyz[2] = z;
     }
 
+    public double getX(){return xyz[0];}
+    public double getY(){return xyz[1];}
+    public double getZ(){return xyz[2];}
+
     public void move(double dx, double dy, double dz){
         xyz[0] += dx;
         xyz[1] += dy;
