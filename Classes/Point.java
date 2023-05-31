@@ -2,7 +2,7 @@ package Classes;
 
 public class Point {
     //Coordinates X-Y Plane Z=height
-    private double[] xyz;
+    public double[] xyz;
 
     Point(double x, double y, double z){
         xyz = new double[3];

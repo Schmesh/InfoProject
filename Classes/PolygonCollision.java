@@ -5,6 +5,8 @@ public abstract class PolygonCollision {
     static public boolean checkCollision(RegularPolygon polygon1, RegularPolygon polygon2){ //Check collision using SAT
         RegularPolygon p1 = polygon1;
         RegularPolygon p2 = polygon2;
+        p1.computePoints();
+        p2.computePoints();
 
         for (int i=0; i<2; i++){
             //Swaps Polygons for second Iteration
@@ -15,28 +17,32 @@ public abstract class PolygonCollision {
             }
             int numberSides = p1.numberSides;
 
-            for (int a=0; a<numberSides;a++){
-                int b = a+1%numberSides;
+            for (int a=0; a<numberSides;a++)
+            {
+                int b = (a+1)%numberSides;
                 //Create Axis of Projection
                 double[] axisProj = new double[]{-(p1.points[b].getY()-p1.points[a].getY()),p1.points[b].getX()-p1.points[a].getX()};
-
+                //Normalizes the vector
+                double d = Math.sqrt(axisProj[0]*axisProj[0]+axisProj[1]*axisProj[1]);
+                axisProj = new double[]{axisProj[0]/d, axisProj[1]/d};
                 //Project shape1 onto the Axis and get min and max
                 double min_r1 =1000000; double max_r1 = -1000000;
-
-                for (int z=0; z<p1.numberSides;z++){
+                for (int z=0; z<p1.numberSides;z++)
+                {
                     //Dot Product
-                    double q = p1.points[z].getX()*axisProj[0] + p1.points[z].getY()*axisProj[2];
+                    double q = p1.points[z].getX()*axisProj[0] + p1.points[z].getY()*axisProj[1];
                     min_r1 = Math.min(min_r1,q);
                     max_r1 = Math.max(max_r1,q);
                 }
 
 
                 //Project shape2 onto the Axis and get min and max
-                double min_r2 =-100000; double max_r2 = 100000;
+                double min_r2 =100000; double max_r2 = -100000;
 
-                for (int z=0; z<p2.numberSides;z++){
+                for (int z=0; z<p2.numberSides;z++)
+                {
                     //Dot Product
-                    double q = p2.points[z].getX()*axisProj[0] + p2.points[z].getY()*axisProj[2];
+                    double q = p2.points[z].getX()*axisProj[0] + p2.points[z].getY()*axisProj[1];
                     min_r2 = Math.min(min_r2,q);
                     max_r2 = Math.max(max_r2,q);
                 }
@@ -69,24 +75,26 @@ public abstract class PolygonCollision {
                 int b = a+1%numberSides;
                 //Create Axis of Projection
                 double[] axisProj = new double[]{-(p1.points[b].getY()-p1.points[a].getY()),p1.points[b].getX()-p1.points[a].getX()};
-
+                //Normalizes the vector
+                double d = Math.sqrt(axisProj[0]*axisProj[0]+axisProj[1]*axisProj[1]);
+                axisProj = new double[]{axisProj[0]/d, axisProj[1]/d};
                 //Project shape1 onto the Axis and get min and max
                 double min_r1 =1000000; double max_r1 = -1000000;
 
                 for (int z=0; z<p1.numberSides;z++){
                     //Dot Product
-                    double q = p1.points[z].getX()*axisProj[0] + p1.points[z].getY()*axisProj[2];
+                    double q = p1.points[z].getX()*axisProj[0] + p1.points[z].getY()*axisProj[1];
                     min_r1 = Math.min(min_r1,q);
                     max_r1 = Math.max(max_r1,q);
                 }
 
 
                 //Project shape2 onto the Axis and get min and max
-                double min_r2 =-100000; double max_r2 = 100000;
+                double min_r2 =100000; double max_r2 = -100000;
 
                 for (int z=0; z<p2.numberSides;z++){
                     //Dot Product
-                    double q = p2.points[z].getX()*axisProj[0] + p2.points[z].getY()*axisProj[2];
+                    double q = p2.points[z].getX()*axisProj[0] + p2.points[z].getY()*axisProj[1];
                     min_r2 = Math.min(min_r2,q);
                     max_r2 = Math.max(max_r2,q);
                 }
@@ -106,6 +114,8 @@ public abstract class PolygonCollision {
 
         p1.x -= overlap*d[0]/s;
         p1.y -= overlap*d[1]/s;
-        return false;
+        return true;
     }
+
+
 }

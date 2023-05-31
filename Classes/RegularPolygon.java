@@ -35,7 +35,12 @@ public class RegularPolygon {
     }
 
     public void setDirection(double direction){
-        this.direction = direction;
+        this.direction = direction%360;
         computePoints();
+    }
+
+    public void move(double dx, double dy){
+        x += dx;
+        y += dy;
     }
 }

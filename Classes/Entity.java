@@ -66,18 +66,6 @@ public class Entity extends PhysicsObject{
         velocities[1]=Math.sin(Math.toRadians(direction))*speed;
     }
 
-    public void applyCollision(Hitbox hitbox){
-        double dX = Math.abs(hitbox.getPos().getXYZ()[0]-this.hitbox.getPos().getXYZ()[0]);
-        double dY = Math.abs(hitbox.getPos().getXYZ()[1]-this.hitbox.getPos().getXYZ()[1]);
-        double dZ = Math.abs(hitbox.getPos().getXYZ()[2]-this.hitbox.getPos().getXYZ()[2]);
-        double distance = Math.sqrt(dX*dX+dY*dY+dZ*dZ);
-        if (hitbox.getDiameter()/2+this.hitbox.getDiameter()/2>distance){
-            while (this.hitbox.checkCollision(hitbox)){
-                this.move(Math.signum(this.getVelocities()[0]*0.01), Math.signum(this.getVelocities()[1]*0.01), Math.signum(this.getVelocities()[2]*0.01));
-            }
-        }
-    }
-
     public void updateEntity(int time){
         updateVelocityXY();
         updatePos(time);

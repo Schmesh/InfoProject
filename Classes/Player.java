@@ -5,7 +5,7 @@ import java.awt.event.*;
 public class Player extends Entity implements KeyListener, MouseMotionListener, MouseListener {
 
     Player(){
-        super(new Hitbox(new Point(0,0,1), new double[]{0.5,0.5,2}),true);
+        super(new Hitbox(4,1,0,0,1,2),true);
     }
 //WASD-Steuerung für den Player
     @Override
