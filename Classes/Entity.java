@@ -7,8 +7,8 @@ public class Entity extends PhysicsObject{
     protected double direction; //0 = positive X, rotation clockwise in degrees (90 ist positive y)
     protected double speed;
 
-    Entity(Hitbox hitbox, boolean hasHP){
-        super(hitbox, hasHP);
+    Entity(Hitbox hitbox){
+        super(hitbox);
     }
 
     public void setSpeed(double speed){this.speed = speed;}
@@ -67,7 +67,6 @@ public class Entity extends PhysicsObject{
     }
 
     public void updateEntity(int time){
-        updateVelocityXY();
         updatePos(time);
     }
 }

@@ -4,7 +4,7 @@ class Hitbox{
     public RegularPolygon base;
     public double height;
 
-    public Point pos;
+    public Point pos = new Point(new double[]{0,0,0});
 
     Hitbox(int numberSides, double radius, double posX, double posY, double posZ, double height){
         base = new RegularPolygon( numberSides,  radius,  posX,  posY);
