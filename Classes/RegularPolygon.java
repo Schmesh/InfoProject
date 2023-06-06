@@ -43,4 +43,10 @@ public class RegularPolygon {
         x += dx;
         y += dy;
     }
+
+    public void moveTo(Point pos){
+        x = pos.getX();
+        y = pos.getY();
+        computePoints();
+    }
 }

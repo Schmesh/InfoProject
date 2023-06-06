@@ -17,6 +17,11 @@ class Hitbox{
         base.move(dx,dy);
     }
 
+    public void moveTo(Point pos){
+        pos.setXyz(pos.getXYZ());
+        base.moveTo(pos);
+    }
+
     public Point getPos(){
         return pos;
     }
