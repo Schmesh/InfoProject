@@ -22,7 +22,7 @@ public class Game implements Runnable {
         while(running) {
             oldTime = System.currentTimeMillis();
             //update
-            gamestate.updateGamestate();
+            gamestate.updateGame();
             time = System.currentTimeMillis();
             if(time-oldTime > maxLoopTime) {
 

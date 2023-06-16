@@ -63,10 +63,10 @@ public class Entity extends PhysicsObject{
         }
         else if (pos.getZ()<hitbox.height/2){
             move(0,0,-(pos.getZ()-hitbox.height/2));
-            velocities[3] = 0;
+            velocities[2] = 0;
         }
         else {
-            velocities[3] = 0;
+            velocities[2] = 0;
         }
     }
 }
