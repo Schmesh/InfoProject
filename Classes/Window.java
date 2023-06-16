@@ -127,6 +127,7 @@ public class Window {
 
                     //renderedTri.color = new Color((int)Math.round(object.getTriangles()[i].color.getRed()+lightDotProduct*255), (int) (object.getTriangles()[i].color.getGreen()+lightDotProduct*255), (int) (object.getTriangles()[i].color.getBlue()+lightDotProduct*255));
                     renderedTri.color = new Color((int) Math.floor(lightFactor*255), (int) Math.floor(lightFactor*255), (int) Math.floor(lightFactor*255));
+
                     renderedTris.add(renderedTri);
                 }
 

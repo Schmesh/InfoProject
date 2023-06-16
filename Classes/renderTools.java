@@ -9,7 +9,7 @@ public class renderTools {
         double calc1 = 1/ Math.tan( Math.toRadians(fov)/2);
 
         output[0] = ((screenHeight/screenWidth)*calc1*inputCoordinate[0]) / inputCoordinate[1];
-        output[1] = 0;  //inputCoordinate[1]*(viewDistance/(viewDistance-distanceToScreen))-((viewDistance*distanceToScreen)/(viewDistance-distanceToScreen)); //y calc disabled for now
+        output[1] = inputCoordinate[1]; //*(viewDistance/(viewDistance-distanceToScreen))-((viewDistance*distanceToScreen)/(viewDistance-distanceToScreen)); //y calc disabled for now
         output[2] = ( calc1 * -inputCoordinate[2]) / inputCoordinate[1];
 
         output[0] += 1;

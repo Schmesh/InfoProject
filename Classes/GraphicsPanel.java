@@ -3,6 +3,8 @@ package Classes;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 //a panel that fits to the window and excludes the bar at the top
 
@@ -40,16 +42,24 @@ public class GraphicsPanel extends JPanel {
 
 
 
-
+        //sortTriangles
+        Collections.sort(renderedTris, new Comparator<Triangle>() {
+            @Override
+            public int compare(Triangle o1, Triangle o2) {
+                return Double.compare(o2.getCenter()[1],o1.getCenter()[1]);
+            }
+        });
 
         int triArraySize = renderedTris.size();
         for (int i = 0; i < triArraySize; i++){
+
             Triangle tri = renderedTris.get(i);
+            System.out.println(tri.getCenter()[1]);
             int[] xCords = {  (int)Math.round(tri.p[0].getXYZ()[0]),  (int)Math.round(tri.p[1].getXYZ()[0]),  (int)Math.round(tri.p[2].getXYZ()[0])  };
             int[] zCords = { (int)Math.round(tri.p[0].getXYZ()[2]),  (int)Math.round(tri.p[1].getXYZ()[2]),  (int)Math.round(tri.p[2].getXYZ()[2])  };
             g2d.setColor(tri.color);
             g2d.fillPolygon( xCords ,zCords, 3);
-            System.out.println(triArraySize);
+
         }
 
         int lineArraySize = lineArray.size();
