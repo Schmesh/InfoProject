@@ -8,11 +8,16 @@ import java.util.ArrayList;
 
 
 public class GraphicsPanel extends JPanel {
-    private ArrayList<double[]> lineArray;
+    public ArrayList<double[]> lineArray;
+    public ArrayList<Triangle> renderedTris;
+    public ArrayList<Triangle> wireframeTris;
     GraphicsPanel() {
         lineArray = new ArrayList();
+        renderedTris = new ArrayList();
+        wireframeTris = new ArrayList();
         this.setPreferredSize(new Dimension(600, 600));
        setBackground(Color.BLACK);
+       //renderedTris.add(new Triangle(new Point[]{  new Point(100,100,100),  new Point(300,100,100),  new Point(100,100,300)  },new Color(30,80,30)) );
     }
     public void drawLines(ArrayList<double[]> lineArray){
         this.lineArray = lineArray;
@@ -27,12 +32,28 @@ public class GraphicsPanel extends JPanel {
     protected void paintComponent(java.awt.Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
-        g2d.setColor(Color.white);
+
         g2d.setStroke(new BasicStroke(1));
         //AlphaComposite alphaComposite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, (float)0.5);
         //g2d.setComposite(alphaComposite);
         //g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+
+
+
+
+        int triArraySize = renderedTris.size();
+        for (int i = 0; i < triArraySize; i++){
+            Triangle tri = renderedTris.get(i);
+            int[] xCords = {  (int)Math.round(tri.p[0].getXYZ()[0]),  (int)Math.round(tri.p[1].getXYZ()[0]),  (int)Math.round(tri.p[2].getXYZ()[0])  };
+            int[] zCords = { (int)Math.round(tri.p[0].getXYZ()[2]),  (int)Math.round(tri.p[1].getXYZ()[2]),  (int)Math.round(tri.p[2].getXYZ()[2])  };
+            g2d.setColor(tri.color);
+            g2d.fillPolygon( xCords ,zCords, 3);
+            System.out.println(triArraySize);
+        }
+
         int lineArraySize = lineArray.size();
+        g2d.setColor(Color.white);
         for (int i = 0; i < lineArraySize;i++){
             g2d.drawLine((int)Math.round(lineArray.get(i)[0]),(int)Math.round(lineArray.get(i)[1]),(int)Math.round(lineArray.get(i)[2]),(int)Math.round(lineArray.get(i)[3]));
         }
