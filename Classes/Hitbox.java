@@ -4,7 +4,7 @@ class Hitbox{
     public RegularPolygon base;
     public double height;
 
-    public Point pos;
+    public Point pos = new Point(new double[]{0,0,0});
 
     Hitbox(int numberSides, double radius, double posX, double posY, double posZ, double height){
         base = new RegularPolygon( numberSides,  radius,  posX,  posY);
@@ -15,6 +15,11 @@ class Hitbox{
     public void move(double dx, double dy, double dz){
         pos.move(dx,dy,dz);
         base.move(dx,dy);
+    }
+
+    public void moveTo(Point pos){
+        pos.setXyz(pos.getXYZ());
+        base.moveTo(pos);
     }
 
     public Point getPos(){
