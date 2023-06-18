@@ -54,7 +54,7 @@ public class GraphicsPanel extends JPanel {
         for (int i = 0; i < triArraySize; i++){
 
             Triangle tri = renderedTris.get(i);
-            System.out.println(tri.getCenter()[1]);
+            //System.out.println(tri.getCenter()[1]);
             int[] xCords = {  (int)Math.round(tri.p[0].getXYZ()[0]),  (int)Math.round(tri.p[1].getXYZ()[0]),  (int)Math.round(tri.p[2].getXYZ()[0])  };
             int[] zCords = { (int)Math.round(tri.p[0].getXYZ()[2]),  (int)Math.round(tri.p[1].getXYZ()[2]),  (int)Math.round(tri.p[2].getXYZ()[2])  };
             g2d.setColor(tri.color);
