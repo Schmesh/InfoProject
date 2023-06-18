@@ -3,22 +3,34 @@ package Classes;
 import java.awt.event.*;
 
 public class Player extends Entity implements KeyListener, MouseMotionListener, MouseListener {
+    double tilt=0; //-90=down; 90 = up
+    double movementDirection=0; //0-360; -1 for no movement;
 
     Player(){
         super(new Hitbox(4,Math.sqrt(2),0,0,1,2));
     }
+
+    @Override public void updateVelocityXY(){
+        velocities[0]=Math.cos(Math.toRadians(movementDirection))*speed;
+        velocities[1]=Math.sin(Math.toRadians(movementDirection))*speed;
+    }
+
+
+
+
+
 //WASD-Steuerung für den Player
     @Override
     public void keyTyped(KeyEvent e) {
         int key = e.getKeyCode();
         if(key == KeyEvent.VK_W)
-            updateVelocityXY(speed, direction);
+            movementDirection=direction;
         if(key == KeyEvent.VK_S)
-            updateVelocityXY(speed*(-1), direction);
+            movementDirection=-direction;
         if(key == KeyEvent.VK_A)
-            updateVelocityXY(speed*0.5, direction-90);
+           movementDirection=-90;
         if(key == KeyEvent.VK_D)
-            updateVelocityXY(speed*0.5, direction+90);
+            movementDirection=direction+90;
     }
 
     @Override
@@ -30,7 +42,7 @@ public class Player extends Entity implements KeyListener, MouseMotionListener, 
     public void keyReleased(KeyEvent e) {
         int key = e.getKeyCode();
         if(key == KeyEvent.VK_W||key == KeyEvent.VK_S||key == KeyEvent.VK_A||key == KeyEvent.VK_D)
-            updateVelocityXY(0, direction);
+            movementDirection = -1;
     }
 
     @Override
