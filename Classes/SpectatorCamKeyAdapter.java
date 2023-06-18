@@ -32,8 +32,10 @@ public class SpectatorCamKeyAdapter extends KeyAdapter{
             cam.qDown = true;
         }
         if (e.getKeyCode() == KeyEvent.VK_SHIFT){
-            cam.shiftDown = true;
             cam.speed = 0.02;
+        }
+        if (e.getKeyCode() == KeyEvent.VK_CONTROL){
+            cam.speed = 1;
         }
     }
 
@@ -58,7 +60,9 @@ public class SpectatorCamKeyAdapter extends KeyAdapter{
             cam.qDown = false;
         }
         if (e.getKeyCode() == KeyEvent.VK_SHIFT){
-            cam.shiftDown = false;
+            cam.speed = 0.1;
+        }
+        if (e.getKeyCode() == KeyEvent.VK_CONTROL){
             cam.speed = 0.1;
         }
     }

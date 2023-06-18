@@ -14,7 +14,6 @@ public class SpectatorCam extends Camera{
     public boolean sDown = false;
     public boolean eDown = false;
     public boolean qDown = false;
-    public boolean shiftDown = false;
     public boolean rightMouseDown = false;
 
     public double speed = 0.1;
@@ -41,7 +40,19 @@ public class SpectatorCam extends Camera{
         } catch (AWTException ex) {
             ex.printStackTrace();
         }
-        rotate(new double[]{mouseMoveVector[1]*-0.1,0,mouseMoveVector[0]*0.1});
+        if (rot[0]>=180){
+            rot[0]-= 360;
+        }
+        if (rot[0]<=-180){
+            rot[0]+= 360;
+        }
+        System.out.println(rot[0]);
+        if (rot[0]<=90&&rot[0]>=-90){
+            rotate(new double[]{mouseMoveVector[1]*-0.1,0,mouseMoveVector[0]*0.1});
+        }else {
+            rotate(new double[]{mouseMoveVector[1]*-0.1,0,mouseMoveVector[0]*-0.1});
+        }
+
     }
     public void updateCamMovement(){
         if (wDown){
