@@ -3,11 +3,11 @@ package Classes;
 import java.util.ArrayList;
 
 public class Gamestate {
-    private int FPS = 60;
+    public int FPS = 60;
     //Attribute sind alle Spielelemente
-    ArrayList<Entity> entities = new ArrayList<>();
-    ArrayList<PhysicsObject> physicsObjects = new ArrayList<>();
-    Player player = new Player();
+    protected ArrayList<Entity> entities = new ArrayList<>();
+    protected ArrayList<PhysicsObject> physicsObjects = new ArrayList<>();
+    protected Player player = new Player();
 
     Gamestate(){
     }
@@ -18,6 +18,10 @@ public class Gamestate {
 
     public ArrayList<PhysicsObject> returnPhysicsObjects(){
         return  physicsObjects;
+    }
+
+    public Player returnPlayer(){
+        return player;
     }
 
     public int getFPS(){
@@ -52,15 +56,12 @@ public class Gamestate {
         }
 
         //entities with entities
-        for (int i = 0; i<numberEntities; i++){
-            for (int z = 0; z<numberEntities; z++){
-                if(i != z){
+        for (int i = 0; i<numberEntities-1; i++){
+            for (int z = i+1; z<numberEntities; z++){
                     Collision.applyCollision(entities.get(i), entities.get(z));
                 }
             }
         }
-
-    }
 
 
 }
