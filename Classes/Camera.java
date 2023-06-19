@@ -11,7 +11,7 @@ public class Camera {
         this.rot = rot;
         this.fov = fov;
 
-        light = new Lighting(new double[]{-1,-1,-0.3});
+        light = new Lighting(new double[]{-1,-0.6,-0.3});
 
     }
 

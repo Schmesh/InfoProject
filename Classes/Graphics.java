@@ -16,11 +16,12 @@ public class Graphics {
 
         cuboidArray.add(new Cuboid(new double[]{1,1,1},new double[]{-0.2,4,0}));
         cuboidArray.add(new Cuboid(new double[]{1,1,1},new double[]{-0.2,6,0}));
-        cuboidArray.add(new Cuboid(new double[]{1,1,1},new double[]{-0.2,8,0}));
-        cuboidArray.add(new Cuboid(new double[]{10,10,1},new double[]{0,6,-5}));
-        for (int i = 0; i < 500;i++){
-            cuboidArray.add(new Cuboid(new double[]{1,1,1},new double[]{-0.2,8+i*2,0}));
-        }
+        //cuboidArray.add(new Cuboid(new double[]{1,1,1},new double[]{-0.2,6,0}));
+        //cuboidArray.add(new Cuboid(new double[]{1,1,1},new double[]{-0.2,8,0}));
+        //cuboidArray.add(new Cuboid(new double[]{10,10,1},new double[]{0,6,-5}));
+        //for (int i = 0; i < 5;i++){
+        //    cuboidArray.add(new Cuboid(new double[]{1,1,1},new double[]{-0.2,8+i*2,0}));
+        //}
 
 
     }
@@ -30,10 +31,12 @@ public class Graphics {
         testWindow.panel.clearLines();
         testWindow.renderedTris.clear();
         double cuboidArraySize = cuboidArray.size();
-        for (int i = 0;i< cuboidArray.size();i++){
-            //cuboidArray.get(i).move(new double[]{0.01,0,0});
-            testWindow.renderObject(cuboidArray.get(i),c1);
-        }
+        //for (int i = 0;i< cuboidArray.size();i++){
+        //    //cuboidArray.get(i).move(new double[]{0.01,0,0});
+        //    testWindow.renderObject(cuboidArray.get(i),c1);
+        //}
+        testWindow.renderObject(cuboidArray.get(0),c1);
+        testWindow.renderObjectWireframe(cuboidArray.get(1),c1);
         //cuboidArray.get(3).rotateZ(2.5);
         //cuboidArray.get(3).rotateX(1);
         //c1.move(new double[]{0.005,0.6,0});

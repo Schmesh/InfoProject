@@ -120,7 +120,7 @@ public class Window {
 
                 //if y > 0 only temporary approach until clipping is implemented
 
-                if (translatedTri.p[0].getXYZ()[1] > 0&&translatedTri.p[1].getXYZ()[1] > 0&&translatedTri.p[2].getXYZ()[1] > 0){ //&&renderTools.normDotProduct(renderTools.getNormal(object.getTriangles()[i]), translatedTri.p[0].getXYZ()) < 0
+                if (translatedTri.p[0].getXYZ()[1] > 0&&translatedTri.p[1].getXYZ()[1] > 0&&translatedTri.p[2].getXYZ()[1] > -0){ //&&renderTools.normDotProduct(renderTools.getNormal(object.getTriangles()[i]), translatedTri.p[0].getXYZ()) < 0
                     double lightDotProduct = renderTools.normDotProduct(renderTools.getNormal(object.getTriangles()[i]),  cam.light.lightVector);
                     double lightFactor = (renderTools.normDotProduct(renderTools.getNormal(object.getTriangles()[i]),  cam.light.lightVector)+1)*0.5;
 

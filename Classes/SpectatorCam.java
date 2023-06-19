@@ -46,7 +46,6 @@ public class SpectatorCam extends Camera{
         if (rot[0]<=-180){
             rot[0]+= 360;
         }
-        System.out.println(rot[0]);
         if (rot[0]<=90&&rot[0]>=-90){
             rotate(new double[]{mouseMoveVector[1]*-0.1,0,mouseMoveVector[0]*0.1});
         }else {
