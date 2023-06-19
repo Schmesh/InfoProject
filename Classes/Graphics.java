@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Graphics {
     Window testWindow;
     SpectatorCam c1;
-    int testArrayLength = 50;
+
     ArrayList<Cuboid> cuboidArray = new ArrayList();
     Graphics(){
         testWindow = new Window();
@@ -16,6 +16,7 @@ public class Graphics {
 
         cuboidArray.add(new Cuboid(new double[]{1,1,1},new double[]{-0.2,4,0}));
         cuboidArray.add(new Cuboid(new double[]{1,1,1},new double[]{-0.2,6,0}));
+        cuboidArray.add(new Cuboid(new double[]{10,10,1},new double[]{0,0,-0.5}));
         //cuboidArray.add(new Cuboid(new double[]{1,1,1},new double[]{-0.2,6,0}));
         //cuboidArray.add(new Cuboid(new double[]{1,1,1},new double[]{-0.2,8,0}));
         //cuboidArray.add(new Cuboid(new double[]{10,10,1},new double[]{0,6,-5}));
@@ -26,7 +27,7 @@ public class Graphics {
 
     }
 
-    public void render(){
+    public void render(Gamestate gamestate){
         c1.updateCamMovement();
         testWindow.panel.clearLines();
         testWindow.renderedTris.clear();
@@ -35,8 +36,9 @@ public class Graphics {
         //    //cuboidArray.get(i).move(new double[]{0.01,0,0});
         //    testWindow.renderObject(cuboidArray.get(i),c1);
         //}
-        testWindow.renderObject(cuboidArray.get(0),c1);
+        //testWindow.renderObject(cuboidArray.get(0),c1);
         testWindow.renderObjectWireframe(cuboidArray.get(1),c1);
+        testWindow.renderObjectWireframe(cuboidArray.get(2),c1);
         //cuboidArray.get(3).rotateZ(2.5);
         //cuboidArray.get(3).rotateX(1);
         //c1.move(new double[]{0.005,0.6,0});

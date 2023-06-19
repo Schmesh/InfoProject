@@ -96,7 +96,7 @@ public class GraphicsPanel extends JPanel {
 
             for (int x = minX; x <= maxX; x++) {
                 for (int y = minZ; y <= maxZ; y++) {
-                    if (x >= 0 && x < getWidth() && y >= 0 && y < getHeight()&&false){
+                    if (x >= 0 && x < getWidth() && y >= 0 && y < getHeight()){
                         double[] barycentricCoords = renderTools.calculateBarycentricCoordinates(projectedPoints, x, y);
                         if(renderTools.isInsideTriangle(barycentricCoords)){
                             double depth = renderTools.calculateDepth(tri, barycentricCoords);
