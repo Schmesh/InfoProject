@@ -56,7 +56,7 @@ public class Entity extends PhysicsObject{
         updatePos(time);
         //Gravity
         if (pos.getZ()>hitbox.height/2){
-            this.addVelocityZ(accelerationZ);
+            this.addVelocityZ(accelerationZ/time);
         }
         else if (pos.getZ()<hitbox.height/2){
             move(0,0,-(pos.getZ()-hitbox.height/2));

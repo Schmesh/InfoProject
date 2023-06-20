@@ -7,7 +7,7 @@ public class Player extends Entity implements KeyListener, MouseMotionListener, 
     double movementDirection=0; //0-360; -1 for no movement; 0 = forward; 90 = to the right
 
     Player(){
-        super(new Hitbox(4,Math.sqrt(2),0,0,1,2));
+        super(new Hitbox(4,Math.sqrt(2),0,0,100,2));
         speed = 1;
         movementDirection=-1;
     }
