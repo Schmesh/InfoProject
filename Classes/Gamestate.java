@@ -29,6 +29,7 @@ public class Gamestate {
     }
 
     public void updateGame(){
+        System.out.println(player.velocities[0] + "  " + player.velocities[1] + "  " + player.velocities[2] + "    " +player.getPos().getX() + "  " + player.getPos().getY() + "  " + player.getPos().getZ());
         int numberEntities = entities.size();
         int numberObjects = physicsObjects.size();
 

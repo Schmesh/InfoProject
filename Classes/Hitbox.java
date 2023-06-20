@@ -4,6 +4,8 @@ class Hitbox{
     public RegularPolygon base;
     public double height;
 
+    public double direction = 0;
+
     public Point pos = new Point(new double[]{0,0,0});
 
     Hitbox(int numberSides, double radius, double posX, double posY, double posZ, double height){
@@ -20,6 +22,16 @@ class Hitbox{
     public void moveTo(Point pos){
         pos.setXyz(pos.getXYZ());
         base.moveTo(pos);
+    }
+
+    public void setDirection(double direction){
+        this.direction = direction;
+        base.setDirection(direction);
+    }
+
+    public void rotate(double angle){
+        direction = angle;
+        base.rotate(angle);
     }
 
     public Point getPos(){

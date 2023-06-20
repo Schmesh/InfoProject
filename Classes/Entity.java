@@ -40,9 +40,9 @@ public class Entity extends PhysicsObject{
     }
 
     public void updatePos(double time){
-        pos.setX(pos.getXYZ()[0]+velocities[0]*time);
-        pos.setX(pos.getXYZ()[1]+velocities[1]*time);
-        pos.setX(pos.getXYZ()[2]+velocities[2]*time);
+        pos.xyz[0] += velocities[0]/time;
+        pos.xyz[1] += velocities[1]/time;
+        pos.xyz[2] += velocities[2]/time;
     }
 
 

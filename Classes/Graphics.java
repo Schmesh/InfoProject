@@ -28,6 +28,7 @@ public class Graphics {
     }
 
     public void render(Gamestate gamestate){
+        c1.pos= gamestate.player.pos.getXYZ();
         c1.updateCamMovement();
         testWindow.panel.clearLines();
         testWindow.renderedTris.clear();
@@ -38,7 +39,7 @@ public class Graphics {
         //}
         //testWindow.renderObject(cuboidArray.get(0),c1);
         testWindow.renderObjectWireframe(cuboidArray.get(1),c1);
-        testWindow.renderObjectWireframe(cuboidArray.get(2),c1);
+        //testWindow.renderObjectWireframe(cuboidArray.get(2),c1);
         //cuboidArray.get(3).rotateZ(2.5);
         //cuboidArray.get(3).rotateX(1);
         //c1.move(new double[]{0.005,0.6,0});

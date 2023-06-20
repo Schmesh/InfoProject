@@ -4,15 +4,17 @@ import java.awt.event.*;
 
 public class Player extends Entity implements KeyListener, MouseMotionListener, MouseListener {
     double tilt=0; //-90=down; 90 = up
-    double movementDirection=0; //0-360; -1 for no movement;
+    double movementDirection=0; //0-360; -1 for no movement; 0 = forward; 90 = to the right
 
     Player(){
         super(new Hitbox(4,Math.sqrt(2),0,0,1,2));
+        speed = 1;
+        movementDirection=0;
     }
 
     @Override public void updateVelocityXY(){
-        velocities[0]=Math.cos(Math.toRadians(movementDirection))*speed;
-        velocities[1]=Math.sin(Math.toRadians(movementDirection))*speed;
+        velocities[0]=Math.sin(Math.toRadians(movementDirection))*speed;
+        velocities[1]=Math.cos(Math.toRadians(movementDirection))*speed;
     }
 
 
