@@ -9,12 +9,18 @@ public class Player extends Entity implements KeyListener, MouseMotionListener, 
     Player(){
         super(new Hitbox(4,Math.sqrt(2),0,0,1,2));
         speed = 1;
-        movementDirection=0;
+        movementDirection=-1;
     }
 
     @Override public void updateVelocityXY(){
-        velocities[0]=Math.sin(Math.toRadians(movementDirection))*speed;
-        velocities[1]=Math.cos(Math.toRadians(movementDirection))*speed;
+        if(movementDirection == -1){
+            velocities[0] = 0;
+            velocities[1] = 0;
+        }
+        else {
+            velocities[0] = Math.sin(Math.toRadians(movementDirection)) * speed;
+            velocities[1] = Math.cos(Math.toRadians(movementDirection)) * speed;
+        }
     }
 
 
