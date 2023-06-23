@@ -120,13 +120,14 @@ public class Window {
 
                 //if y > 0 only temporary approach until clipping is implemented
 
-                if (translatedTri.p[0].getXYZ()[1] > 0&&translatedTri.p[1].getXYZ()[1] > 0&&translatedTri.p[2].getXYZ()[1] > 0){ //&&renderTools.normDotProduct(renderTools.getNormal(object.getTriangles()[i]), translatedTri.p[0].getXYZ()) < 0
+                if (translatedTri.p[0].getXYZ()[1] > 0&&translatedTri.p[1].getXYZ()[1] > 0&&translatedTri.p[2].getXYZ()[1] > -0){ //&&renderTools.normDotProduct(renderTools.getNormal(object.getTriangles()[i]), translatedTri.p[0].getXYZ()) < 0
                     double lightDotProduct = renderTools.normDotProduct(renderTools.getNormal(object.getTriangles()[i]),  cam.light.lightVector);
                     double lightFactor = (renderTools.normDotProduct(renderTools.getNormal(object.getTriangles()[i]),  cam.light.lightVector)+1)*0.5;
 
 
                     //renderedTri.color = new Color((int)Math.round(object.getTriangles()[i].color.getRed()+lightDotProduct*255), (int) (object.getTriangles()[i].color.getGreen()+lightDotProduct*255), (int) (object.getTriangles()[i].color.getBlue()+lightDotProduct*255));
                     renderedTri.color = new Color((int) Math.floor(lightFactor*255), (int) Math.floor(lightFactor*255), (int) Math.floor(lightFactor*255));
+
                     renderedTris.add(renderedTri);
                 }
 

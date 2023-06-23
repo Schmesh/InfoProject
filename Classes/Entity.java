@@ -1,7 +1,7 @@
 package Classes;
 
 public class Entity extends PhysicsObject{
-    private double[] velocities = new double[]{0,0,0};
+    protected double[] velocities = new double[]{0,0,0};
     protected double direction; //0 = positive X, rotation clockwise in degrees (90 ist positive y)
     protected double speed;
 
@@ -40,15 +40,11 @@ public class Entity extends PhysicsObject{
     }
 
     public void updatePos(double time){
-        pos.setX(pos.getXYZ()[0]+velocities[0]*time);
-        pos.setX(pos.getXYZ()[1]+velocities[1]*time);
-        pos.setX(pos.getXYZ()[2]+velocities[2]*time);
+        pos.xyz[0] += velocities[0]/time;
+        pos.xyz[1] += velocities[1]/time;
+        pos.xyz[2] += velocities[2]/time;
     }
 
-    public void updateVelocityXY(double speed, double direction){
-        velocities[0]=Math.cos(Math.toRadians(direction))*speed;
-        velocities[1]=Math.sin(Math.toRadians(direction))*speed;
-    }
 
     public void updateVelocityXY(){
         velocities[0]=Math.cos(Math.toRadians(direction))*speed;
@@ -56,10 +52,11 @@ public class Entity extends PhysicsObject{
     }
 
     public void updateEntity(int time){
+        updateVelocityXY();
         updatePos(time);
         //Gravity
         if (pos.getZ()>hitbox.height/2){
-            this.addVelocityZ(accelerationZ);
+            this.addVelocityZ(accelerationZ/time);
         }
         else if (pos.getZ()<hitbox.height/2){
             move(0,0,-(pos.getZ()-hitbox.height/2));
@@ -69,4 +66,6 @@ public class Entity extends PhysicsObject{
             velocities[2] = 0;
         }
     }
+
+
 }

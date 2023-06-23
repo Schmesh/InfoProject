@@ -3,7 +3,7 @@ package Classes;
 import java.awt.*;
 
 public class Triangle {
-    Color color = new Color(100,100,100);
+    public Color color = new Color(100,100,100);
 
     public Point[] p = new Point[3];;
 
@@ -23,7 +23,11 @@ public class Triangle {
         this.color = color;
 
     }
+    public double[] getCenter(){
 
+        return renderTools.divVector(renderTools.addVector(renderTools.addVector(p[0].getXYZ(),p[1].getXYZ()),p[2].getXYZ()),3);
+
+    }
     public void setColor(Color color){
         this.color = color;
     }

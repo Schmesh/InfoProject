@@ -11,7 +11,35 @@ public class Camera {
         this.rot = rot;
         this.fov = fov;
 
-        light = new Lighting(new double[]{-1,-1,-0.3});
+        light = new Lighting(new double[]{-1,-0.6,-0.3});
+
+    }
+
+    public double[] getLookVector() {
+        double[] vectorPoint =  renderTools.addVector(pos, new double[]{0,1,0}) ;
+        vectorPoint = renderTools.rotateAroundPointX(vectorPoint,pos, -rot[0]);
+        vectorPoint = renderTools.rotateAroundPointZ(vectorPoint,pos, rot[2]);
+        double[] vector = renderTools.subVector(vectorPoint,pos);
+
+        return vector;
+
+    }
+    public double[] getRightVector() {
+        double[] vectorPoint =  renderTools.addVector(pos, new double[]{1,0,0}) ;
+        vectorPoint = renderTools.rotateAroundPointX(vectorPoint,pos, rot[0]);
+        vectorPoint = renderTools.rotateAroundPointZ(vectorPoint,pos, rot[2]);
+        double[] vector = renderTools.subVector(vectorPoint,pos);
+
+        return vector;
+
+    }
+    public double[] getUpVector() {
+        double[] vectorPoint =  renderTools.addVector(pos, new double[]{0,0,1}) ;
+        vectorPoint = renderTools.rotateAroundPointX(vectorPoint,pos, -rot[0]);
+        vectorPoint = renderTools.rotateAroundPointZ(vectorPoint,pos, rot[2]);
+        double[] vector = renderTools.subVector(vectorPoint,pos);
+
+        return vector;
 
     }
 

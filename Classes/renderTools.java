@@ -9,7 +9,7 @@ public class renderTools {
         double calc1 = 1/ Math.tan( Math.toRadians(fov)/2);
 
         output[0] = ((screenHeight/screenWidth)*calc1*inputCoordinate[0]) / inputCoordinate[1];
-        output[1] = 0;  //inputCoordinate[1]*(viewDistance/(viewDistance-distanceToScreen))-((viewDistance*distanceToScreen)/(viewDistance-distanceToScreen)); //y calc disabled for now
+        output[1] = inputCoordinate[1]; //*(viewDistance/(viewDistance-distanceToScreen))-((viewDistance*distanceToScreen)/(viewDistance-distanceToScreen)); //y calc disabled for now
         output[2] = ( calc1 * -inputCoordinate[2]) / inputCoordinate[1];
 
         output[0] += 1;
@@ -189,6 +189,50 @@ public class renderTools {
         double[] cross2 = crossProduct(edge2,edge1);
 
         return (dotProduct(cross0,cross1) >= 0) && (dotProduct(cross0,cross2) >= 0);
+    }
+
+    public static double[] calculateBarycentricCoordinates(double[][] trianglePoints, int x, int y) {
+        double[] p0 = trianglePoints[0];
+        double[] p1 = trianglePoints[1];
+        double[] p2 = trianglePoints[2];
+
+        double area0 = calculateSignedArea(p1, p2, x, y);
+        double area1 = calculateSignedArea(p2, p0, x, y);
+        double area2 = calculateSignedArea(p0, p1, x, y);
+
+        double totalArea = calculateSignedArea(p0, p1, p2);
+
+        double barycentric0 = area0 / totalArea;
+        double barycentric1 = area1 / totalArea;
+        double barycentric2 = area2 / totalArea;
+
+        return new double[]{barycentric0, barycentric1, barycentric2};
+    }
+
+    public static double calculateSignedArea(double[] p0, double[] p1, int x, int y) {
+        return (p0[0] * (p1[1] - y) + p1[0] * (y - p0[1]) + x * (p0[1] - p1[1])) / 2.0;
+    }
+
+    public static double calculateSignedArea(double[] p0, double[] p1, double[] p2) {
+        return (p0[0] * (p1[1] - p2[1]) + p1[0] * (p2[1] - p0[1]) + p2[0] * (p0[1] - p1[1])) / 2.0;
+    }
+
+    public static boolean isInsideTriangle(double[] barycentricCoords) {
+        double u = barycentricCoords[0];
+        double v = barycentricCoords[1];
+        double w = barycentricCoords[2];
+        return u >= 0 && u <= 1 && v >= 0 && v <= 1 && w >= 0 && w <= 1;
+    }
+
+    public static double calculateDepth(Triangle triangle, double[] barycentricCoords) {
+
+        double[] p0 = triangle.p[0].getXYZ();
+        double[] p1 = triangle.p[1].getXYZ();
+        double[] p2 = triangle.p[2].getXYZ();
+
+        double depth = barycentricCoords[0] * p0[1] + barycentricCoords[1] * p1[1] + barycentricCoords[2] * p2[1];
+
+        return depth;
     }
 
 }

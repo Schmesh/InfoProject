@@ -4,6 +4,8 @@ public class PhysicsObject {
     protected Hitbox hitbox;
     protected Point pos;
 
+    protected double direction = 0;
+
     boolean hasHP;
 
     PhysicsObject(Hitbox hitbox){
@@ -13,6 +15,16 @@ public class PhysicsObject {
 
     public Point getPos(){
         return pos;
+    }
+
+    public void setDirection(double direction){
+        this.direction = direction;
+        hitbox.setDirection(direction);
+    }
+
+    public void rotate(double angle){
+        this.direction += angle;
+        this.hitbox.rotate(angle);
     }
 
     public Hitbox getHitbox(){

@@ -39,6 +39,11 @@ public class RegularPolygon {
         computePoints();
     }
 
+    public void rotate(double angle){
+        direction += angle;
+        computePoints();
+    }
+
     public void move(double dx, double dy){
         x += dx;
         y += dy;
