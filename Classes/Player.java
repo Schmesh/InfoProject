@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Player extends Entity implements KeyListener, MouseMotionListener, MouseListener {
+public class Player extends Entity  {
     double tilt = 0; //-90=down; 90 = up
     double movementDirection = 0; //0-360; -1 for no movement; 0 = forward; 90 = to the right
     public boolean wDown = false;
@@ -13,15 +13,43 @@ public class Player extends Entity implements KeyListener, MouseMotionListener, 
     public boolean sDown = false;
     public boolean rightMouseDown = false;
     private JPanel currentPanel;
-
+    public PlayerKeyadapter k1;
+    public PlayerMouseAdapter m1;
+    public PlayerMouseListener ml1;
     Player() {
-        super(new Hitbox(4, Math.sqrt(2), 0, 0, 100, 2));
+        super(new Hitbox(4, Math.sqrt(2), 0, 0, 1, 2));
         speed = 1;
         movementDirection = -1;
+        PlayerKeyadapter k1 = new PlayerKeyadapter(this);
+      //  PlayerMouseAdapter m1 = new PlayerMouseAdapter(this);
+        PlayerMouseListener ml1 = new PlayerMouseListener(this);
+
+    }
+    public void updateMovementDirection() {
+        if(wDown&&aDown)
+            movementDirection = 315+direction;
+        else if(wDown&&dDown)
+            movementDirection = 45+direction;
+        else if(sDown&&aDown)
+            movementDirection = 225+direction;
+        else if(sDown&&dDown)
+            movementDirection = 135+direction;
+        else if(wDown)
+            movementDirection = 0+direction;
+        else if(aDown)
+            movementDirection = 270+direction;
+        else if (sDown)
+            movementDirection = 180+direction;
+        else if(dDown)
+            movementDirection = 90+direction;
+            else
+            movementDirection = -1;
+
     }
 
     @Override
     public void updateVelocityXY() {
+        updateMovementDirection();
         if (movementDirection == -1) {
             velocities[0] = 0;
             velocities[1] = 0;
@@ -31,67 +59,6 @@ public class Player extends Entity implements KeyListener, MouseMotionListener, 
         }
     }
 
-
-    //WASD-Steuerung für den Player
-    @Override
-    public void keyTyped(KeyEvent e) {
-        int key = e.getKeyCode();
-        if (key == KeyEvent.VK_W)
-            movementDirection = direction;
-        if (key == KeyEvent.VK_S)
-            movementDirection = -direction;
-        if (key == KeyEvent.VK_A)
-            movementDirection = -90;
-        if (key == KeyEvent.VK_D)
-            movementDirection = direction + 90;
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-        int key = e.getKeyCode();
-        if (key == KeyEvent.VK_W || key == KeyEvent.VK_S || key == KeyEvent.VK_A || key == KeyEvent.VK_D)
-            movementDirection = -1;
-    }
-
-    @Override
-    public void mouseDragged(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseMoved(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-
-    }
 
     public int[] mouseStart = new int[]{0, 0};
 
