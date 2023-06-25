@@ -2,6 +2,7 @@ package Classes;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -14,7 +15,11 @@ public class GraphicsPanel extends JPanel {
     public ArrayList<Triangle> renderedTris;
     public ArrayList<Triangle> wireframeTris;
     public double[][] depthBuffer;
-    GraphicsPanel() {
+    BufferedImage image = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB);
+
+    Window currentWindow;
+
+    GraphicsPanel(Window window) {
        clearDepthBuffer();
         lineArray = new ArrayList();
         renderedTris = new ArrayList();
@@ -22,6 +27,7 @@ public class GraphicsPanel extends JPanel {
         this.setPreferredSize(new Dimension(600, 600));
        setBackground(Color.BLACK);
        //renderedTris.add(new Triangle(new Point[]{  new Point(100,100,100),  new Point(300,100,100),  new Point(100,100,300)  },new Color(30,80,30)) );
+        currentWindow = window;
     }
     private void clearDepthBuffer(){
         depthBuffer = new double[getWidth()][getHeight()];
@@ -35,7 +41,10 @@ public class GraphicsPanel extends JPanel {
     }
     public void drawLines(ArrayList<double[]> lineArray){
         this.lineArray = lineArray;
+        image = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_RGB);
         repaint();
+
+        currentWindow.window.getContentPane().add(new JLabel(new ImageIcon(image)));
     }
 
     public void clearLines(){
@@ -56,10 +65,11 @@ public class GraphicsPanel extends JPanel {
         clearDepthBuffer();
 
         //sortTriangles
+
         //Collections.sort(renderedTris, new Comparator<Triangle>() {
         //    @Override
         //    public int compare(Triangle o1, Triangle o2) {
-        //        return Double.compare(o2.getCenter()[1],o1.getCenter()[1]);
+        //        return Double.compare(o1.getCenter()[1],o2.getCenter()[1]);
         //    }
         //});
 
@@ -93,26 +103,34 @@ public class GraphicsPanel extends JPanel {
             double size = (maxX-minX)*(maxZ-minZ);
             System.out.println(size);
 
+            int red = tri.color.getRed();   // Red component value
+            int green = tri.color.getGreen();   // Green component value
+            int blue = tri.color.getBlue();    // Blue component value
+            int rgb = (red << 16) | (green << 8) | blue;
 
-            for (int x = minX; x <= maxX; x++) {
-                for (int y = minZ; y <= maxZ; y++) {
-                    if (x >= 0 && x < getWidth() && y >= 0 && y < getHeight()){
-                        double[] barycentricCoords = renderTools.calculateBarycentricCoordinates(projectedPoints, x, y);
-                        if(renderTools.isInsideTriangle(barycentricCoords)){
-                            double depth = renderTools.calculateDepth(tri, barycentricCoords);
-                            if (depth < depthBuffer[x][y] && depth > 0) {
+            if (size < 3000000 && size > 0){
+                for (int x = minX; x <= maxX; x++) {
+                    for (int z = minZ; z <= maxZ; z++) {
+                        if (x >= 0 && x < getWidth() && z >= 0 && z < getHeight()){
+                            double[] barycentricCoords = renderTools.calculateBarycentricCoordinates(projectedPoints, x, z);
+                            if(renderTools.isInsideTriangle(barycentricCoords)){
+                                double depth = renderTools.calculateDepth(tri, barycentricCoords);
+                                if (depth < depthBuffer[x][z] && depth > 0) {
 
-                                depthBuffer[x][y] = depth;
-
-                                g2d.drawLine(x, y, x, y);
-
+                                    depthBuffer[x][z] = depth;
 
 
+                                    image.setRGB(x,z,rgb);
+
+
+                                }
                             }
                         }
                     }
                 }
+
             }
+
 
         }
 //================

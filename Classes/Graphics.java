@@ -14,9 +14,10 @@ public class Graphics {
         testWindow.panel.addMouseListener(c1.m1);
         testWindow.panel.addMouseMotionListener(c1.ml1);
 
-        cuboidArray.add(new Cuboid(new double[]{1,1,1},new double[]{-0.2,4,0}));
+        cuboidArray.add(new Cuboid(new double[]{1,1,1},new double[]{0,6.2,0}));
         cuboidArray.add(new Cuboid(new double[]{1,1,1},new double[]{-0.2,6,0}));
-        cuboidArray.add(new Cuboid(new double[]{10,10,1},new double[]{0,0,-0.5}));
+        cuboidArray.get(0).rotateZ(30);
+        cuboidArray.get(0).rotateX(70);
         //cuboidArray.add(new Cuboid(new double[]{1,1,1},new double[]{-0.2,6,0}));
         //cuboidArray.add(new Cuboid(new double[]{1,1,1},new double[]{-0.2,8,0}));
         //cuboidArray.add(new Cuboid(new double[]{10,10,1},new double[]{0,6,-5}));
@@ -28,17 +29,17 @@ public class Graphics {
     }
 
     public void render(Gamestate gamestate){
-        c1.pos= gamestate.player.pos.getXYZ();
+        //c1.pos= gamestate.player.pos.getXYZ();
         c1.updateCamMovement();
         testWindow.panel.clearLines();
         testWindow.renderedTris.clear();
         double cuboidArraySize = cuboidArray.size();
-        //for (int i = 0;i< cuboidArray.size();i++){
-        //    //cuboidArray.get(i).move(new double[]{0.01,0,0});
-        //    testWindow.renderObject(cuboidArray.get(i),c1);
-        //}
-        //testWindow.renderObject(cuboidArray.get(0),c1);
-        testWindow.renderObjectWireframe(cuboidArray.get(1),c1);
+        for (int i = 0;i< cuboidArray.size();i++){
+            //cuboidArray.get(i).move(new double[]{0.01,0,0});
+            testWindow.renderObject(cuboidArray.get(i),c1);
+        }
+
+        //testWindow.renderObjectWireframe(cuboidArray.get(1),c1);
         //testWindow.renderObjectWireframe(cuboidArray.get(2),c1);
         //cuboidArray.get(3).rotateZ(2.5);
         //cuboidArray.get(3).rotateX(1);
