@@ -14,7 +14,6 @@ public class SpectatorCamKeyAdapter extends KeyAdapter{
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_W){
           cam.wDown = true;
-      //    System.out.println("wpressw");
         }
         if (e.getKeyCode() == KeyEvent.VK_S){
             cam.sDown = true;
