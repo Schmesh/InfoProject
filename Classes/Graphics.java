@@ -13,9 +13,7 @@ public class Graphics {
         testWindow.window.addKeyListener(c1.k1);
         testWindow.panel.addMouseListener(c1.m1);
         testWindow.panel.addMouseMotionListener(c1.ml1);
-        testWindow.window.addKeyListener(gamestate.returnPlayer().k1);
-        testWindow.panel.addMouseListener(gamestate.returnPlayer().m1);
-        testWindow.panel.addMouseMotionListener(gamestate.returnPlayer().ml1);
+
 
         cuboidArray.add(new Cuboid(new double[]{1,1,1},new double[]{0,6.2,0}));
 
