@@ -4,6 +4,7 @@ import Classes.GraphicsPanel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 public class Window {
@@ -17,11 +18,12 @@ public class Window {
 
     public ArrayList<Triangle> renderedTris;
 
+
     public Window() {
         //Creates a new Classes.Window and makes it visible
         //creates a graphics panel and adds it to the window
         window = new JFrame("test");
-        panel = new GraphicsPanel();
+        panel = new GraphicsPanel(this);
         window.add(panel);
         window.setVisible(true);
         window.pack();
@@ -33,6 +35,10 @@ public class Window {
         renderedTris = new ArrayList();
         //maximizes the window
         window.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+
+
+
     }
 
 

@@ -2,7 +2,7 @@ package Classes;
 
 public class Game implements Runnable {
     Gamestate gamestate = new Gamestate();
-    Graphics graphics = new Graphics();
+    Graphics graphics = new Graphics(gamestate);
 
     private int FPS = gamestate.getFPS();
     private long maxLoopTime = 1000 / FPS;
