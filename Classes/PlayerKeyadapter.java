@@ -7,13 +7,15 @@ public class PlayerKeyadapter extends KeyAdapter {
 
     private Player pla;
 
-    PlayerKeyadapter(Player pam) {
+    PlayerKeyadapter(Player pla) {
         this.pla = pla;
     }
 
     public void keyPressed(KeyEvent e) {
+        System.out.println("test");
         if (e.getKeyCode() == KeyEvent.VK_W) {
             pla.wDown = true;
+      //      System.out.println(pla.wDown);
             System.out.println("wpressw");
         }
         if (e.getKeyCode() == KeyEvent.VK_S) {
@@ -35,6 +37,7 @@ public class PlayerKeyadapter extends KeyAdapter {
     public void keyReleased(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_W) {
             pla.wDown = false;
+            System.out.println("keyreleased");
         }
         if (e.getKeyCode() == KeyEvent.VK_S) {
             pla.sDown = false;

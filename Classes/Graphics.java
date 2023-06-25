@@ -14,6 +14,7 @@ public class Graphics {
         testWindow.panel.addMouseListener(c1.m1);
         testWindow.panel.addMouseMotionListener(c1.ml1);
 
+
         cuboidArray.add(new Cuboid(new double[]{1,1,1},new double[]{-0.2,4,0}));
         cuboidArray.add(new Cuboid(new double[]{1,1,1},new double[]{-0.2,6,0}));
         cuboidArray.add(new Cuboid(new double[]{10,10,1},new double[]{0,0,-0.5}));
@@ -28,8 +29,8 @@ public class Graphics {
     }
 
     public void render(Gamestate gamestate){
-        c1.pos= gamestate.player.pos.getXYZ();
         c1.updateCamMovement();
+        c1.pos= gamestate.player.pos.getXYZ();
         testWindow.panel.clearLines();
         testWindow.renderedTris.clear();
         double cuboidArraySize = cuboidArray.size();

@@ -22,7 +22,7 @@ public class SpectatorCam extends Camera{
         currentPanel = panel;
         k1 = new SpectatorCamKeyAdapter(this);
         m1 = new SpectatorCamMouseAdapter(this);
-        ml1 = new SpectatorCamMouseListener(this);
+       ml1 = new SpectatorCamMouseListener(this);
     }
 
 
