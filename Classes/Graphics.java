@@ -46,7 +46,11 @@ public class Graphics {
         for (int i = 0;i< cuboidArray.size();i++){
             testWindow.renderObjectWireframe(cuboidArray.get(i),playerCam);
         }
-        testWindow.renderLine(testLineArray.get(0));
+
+        for (TestLine line : testLineArray){
+            testWindow.renderLine(line);
+        }
+
         testWindow.panel.lineArray = testWindow.lines;
         testWindow.panel.renderedTris = testWindow.renderedTris;
         testWindow.panel.drawLines(testWindow.lines);
