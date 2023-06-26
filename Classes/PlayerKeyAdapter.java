@@ -1,16 +1,20 @@
 package Classes;
 
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.*;
 
-public class PlayerKeyadapter extends KeyAdapter {
+public class PlayerKeyAdapter extends KeyAdapter {
 
-    private Player pla;
+    private final Player pla;
 
-    PlayerKeyadapter(Player pla) {
+    PlayerKeyAdapter(Player pla) {
         this.pla = pla;
+
     }
 
+
+    @Override
     public void keyPressed(KeyEvent e) {
         System.out.println("test");
         if (e.getKeyCode() == KeyEvent.VK_W) {
@@ -34,6 +38,7 @@ public class PlayerKeyadapter extends KeyAdapter {
             pla.speed = 1;
     }
 //jump noch hinzufügen brauche vincent
+    @Override
     public void keyReleased(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_W) {
             pla.wDown = false;

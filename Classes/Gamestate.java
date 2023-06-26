@@ -32,8 +32,8 @@ public class Gamestate {
    //     System.out.println(player.velocities[0] + "  " + player.velocities[1] + "  " + player.velocities[2] + "    " +player.getPos().getX() + "  " + player.getPos().getY() + "  " + player.getPos().getZ());
         int numberEntities = entities.size();
         int numberObjects = physicsObjects.size();
-        System.out.println(player.movementDirection);
-        System.out.println(player.wDown);
+        //System.out.println(player.movementDirection);
+        //System.out.println(player.wDown);
         //update entities
         player.updateEntity(FPS);
         for (int i = 0; i<numberEntities; i++){

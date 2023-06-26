@@ -1,3 +1,4 @@
+
 package Classes;
 
 import javax.swing.*;
@@ -10,7 +11,7 @@ public class SpectatorCamKeyAdapter extends KeyAdapter{
         this.cam = cam;
     }
 
-    @Override
+
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_W){
           cam.wDown = true;
@@ -38,7 +39,7 @@ public class SpectatorCamKeyAdapter extends KeyAdapter{
         }
     }
 
-    @Override
+
     public void keyReleased(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_W){
             cam.wDown = false;
@@ -68,3 +69,4 @@ public class SpectatorCamKeyAdapter extends KeyAdapter{
 
 
 }
+
