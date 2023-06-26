@@ -9,6 +9,8 @@ public class Graphics {
     Camera playerCam;
 
     ArrayList<Cuboid> cuboidArray = new ArrayList();
+
+    ArrayList<TestLine> testLineArray = new ArrayList();
     Graphics(Gamestate gamestate){
         testWindow = new Window();
         c1 = new SpectatorCam(new double[]{0,0,0},new double[]{0,0,0},90, testWindow.panel);
@@ -30,7 +32,7 @@ public class Graphics {
         cuboidArray.get(0).rotateZ(30);
         cuboidArray.get(0).rotateX(70);
 
-
+        testLineArray.add(new TestLine(new double[][]{{0,0},{100,100}}));
 
     }
 
@@ -42,9 +44,9 @@ public class Graphics {
         testWindow.renderedTris.clear();
         double cuboidArraySize = cuboidArray.size();
         for (int i = 0;i< cuboidArray.size();i++){
-
             testWindow.renderObjectWireframe(cuboidArray.get(i),playerCam);
         }
+        testWindow.renderLine(testLineArray.get(0));
         testWindow.panel.lineArray = testWindow.lines;
         testWindow.panel.renderedTris = testWindow.renderedTris;
         testWindow.panel.drawLines(testWindow.lines);

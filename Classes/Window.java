@@ -18,6 +18,8 @@ public class Window {
 
     public ArrayList<Triangle> renderedTris;
 
+    public ArrayList<TestLine> testLines;
+
 
     public Window() {
         //Creates a new Classes.Window and makes it visible
@@ -151,5 +153,9 @@ public class Window {
     public double getFov(){
         return fov;
     }
+
+    public void renderLine(TestLine line){
+        lines.add(new double[]  {line.points[0][0],line.points[0][1],line.points[1][0],line.points[1][1] }  );
+    };
 
 }
