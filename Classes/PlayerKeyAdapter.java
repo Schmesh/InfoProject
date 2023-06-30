@@ -16,11 +16,9 @@ public class PlayerKeyAdapter extends KeyAdapter {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        System.out.println("test");
         if (e.getKeyCode() == KeyEvent.VK_W) {
             pla.wDown = true;
-      //      System.out.println(pla.wDown);
-            System.out.println("wpressw");
+            //      System.out.println(pla.wDown);
         }
         if (e.getKeyCode() == KeyEvent.VK_S) {
             pla.sDown = true;
@@ -37,7 +35,7 @@ public class PlayerKeyAdapter extends KeyAdapter {
         if (e.getKeyCode() == KeyEvent.VK_CONTROL)
             pla.speed = 1;
     }
-//jump noch hinzufügen brauche vincent
+    //jump noch hinzufügen brauche vincent
     @Override
     public void keyReleased(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_W) {

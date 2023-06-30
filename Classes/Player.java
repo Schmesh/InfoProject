@@ -13,12 +13,11 @@ public class Player extends Entity  {
     public boolean sDown = false;
     public boolean rightMouseDown = false;
     private JPanel currentPanel;
-    public PlayerKeyAdapter k1;
-
     public PlayerMouseAdapter m1;
     public PlayerMouseListener ml1;
+    public PlayerKeyAdapter k1;
     Player() {
-        super(new Hitbox(4, Math.sqrt(2), 0, 0, 1, 2));
+        super(new Hitbox(new double[]{1,1,2}, new double[]{0,0,1}));
         speed = 1;
         movementDirection = -1;
         k1 = new PlayerKeyAdapter(this);

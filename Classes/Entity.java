@@ -55,11 +55,11 @@ public class Entity extends PhysicsObject{
         updateVelocityXY();
         updatePos(time);
         //Gravity
-        if (pos.getZ()>hitbox.height/2){
+        if (pos.getZ()>hitbox.size[2]/2){
             this.addVelocityZ(accelerationZ/time);
         }
-        else if (pos.getZ()<hitbox.height/2){
-            move(0,0,-(pos.getZ()-hitbox.height/2));
+        else if (pos.getZ()<hitbox.size[2]/2){
+            move(0,0,-(pos.getZ()-hitbox.size[2]/2));
             velocities[2] = 0;
         }
         else {
