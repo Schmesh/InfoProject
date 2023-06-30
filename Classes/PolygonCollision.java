@@ -72,7 +72,7 @@ public abstract class PolygonCollision {
             int numberSides = p1.numberSides;
 
             for (int a=0; a<numberSides;a++){
-                int b = a+1%numberSides;
+                int b = (a+1)%numberSides;
                 //Create Axis of Projection
                 double[] axisProj = new double[]{-(p1.points[b].getY()-p1.points[a].getY()),p1.points[b].getX()-p1.points[a].getX()};
                 //Normalizes the vector
