@@ -16,8 +16,8 @@ public class Player extends Entity  {
     public PlayerMouseAdapter m1;
     public PlayerMouseListener ml1;
     public PlayerKeyAdapter k1;
-    Player() {
-        super(new Hitbox(new double[]{1,1,2}, new double[]{0,0,1}));
+    Player(double x, double y, double z) {
+        super(new Hitbox(new double[]{1,1,2}, new double[]{x,y,z}));
         speed = 1;
         movementDirection = -1;
         k1 = new PlayerKeyAdapter(this);

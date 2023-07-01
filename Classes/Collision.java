@@ -32,7 +32,7 @@ public abstract class Collision {
 
 
 //Applies Collision between two hitboxes, h1 gets moved
-    public static boolean applyCollision(Hitbox h1, Hitbox h2){
+    public static boolean applyCollision(Hitbox h1, Hitbox h2, double[] velocities){
         double xMax1 = h1.pos.getX()+h1.size[0]/2;    double xMin1 = h1.pos.getX()-h1.size[0]/2;
         double yMax1 = h1.pos.getY()+h1.size[1]/2;    double yMin1 = h1.pos.getY()-h1.size[1]/2;
         double zMax1 = h1.pos.getZ()+h1.size[2]/2;    double zMin1 = h1.pos.getZ()-h1.size[2]/2;
@@ -73,29 +73,38 @@ public abstract class Collision {
             //Resolve Collision
             if(overlapX < overlapY && overlapX < overlapZ){
                 if(h1.pos.getX()<h2.pos.getX()){
-                    h1.move(-overlapX,0,0);
+                    if(velocities[0]>=0) {
+                        h1.move(-overlapX, 0, 0);
+                    }
                 }
                 else {
-                    h1.move(overlapX,0,0);
+                    if(velocities[0]<=0) {
+                        h1.move(overlapX, 0, 0);
+                    }
                 }
                 return true;
             }
 
             else if (overlapY < overlapX && overlapY < overlapZ) {
                 if(h1.pos.getY()<h2.pos.getY()){
-                    h1.move(0,-overlapY,0);
+                    if(velocities[1]>=0) {
+                        h1.move(0, -overlapY, 0);
+                    }
                 }
                 else {
-                    h1.move(0,overlapY,0);
+                    if(velocities[1]<=0) {
+                        h1.move(0, overlapY, 0);
+                    }
                 }
                 return true;
             }
             else if (overlapZ < overlapX && overlapZ < overlapY) {
                 if(h1.pos.getZ()<h2.pos.getZ()){
-                    h1.move(0,0,-overlapZ);
+                        h1.move(0, 0, -overlapZ);
                 }
                 else {
                     h1.move(0,0,overlapZ);
+                    velocities[2] = 0;
                 }
                 return true;
             }
@@ -105,9 +114,10 @@ public abstract class Collision {
 
 
 
-    public static void applyCollision(Entity entity, PhysicsObject object){
-        applyCollision(entity.hitbox, object.hitbox);
+    public static void applyCollision(Entity entity, PhysicsObject object, double[] velocities){
+        applyCollision(entity.hitbox, object.hitbox, velocities);
         entity.moveTo(entity.hitbox.getPos());
     }
+
 
 }

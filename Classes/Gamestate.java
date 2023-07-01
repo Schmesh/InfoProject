@@ -7,10 +7,10 @@ public class Gamestate {
     //Attribute sind alle Spielelemente
     protected ArrayList<Entity> entities = new ArrayList<>();
     protected ArrayList<PhysicsObject> physicsObjects = new ArrayList<>();
-    protected Player player = new Player();
+    protected Player player = new Player(0,0,5);
 
     Gamestate(){
-        physicsObjects.add(new PhysicsObject(new Hitbox(new double []{1,1,1}, new double[]{0,5,0})));
+        physicsObjects.add(new PhysicsObject(new Hitbox(new double []{1,1,1}, new double[]{0,0,2})));
     }
 
     public ArrayList<Entity> returnEntities(){
@@ -46,23 +46,23 @@ public class Gamestate {
         //entities with objects
         for (int i = 0; i<numberEntities; i++){
             for (int z = 0; z<numberObjects; z++){
-                Collision.applyCollision(entities.get(i), physicsObjects.get(z));
+                Collision.applyCollision(entities.get(i), physicsObjects.get(z), entities.get(i).velocities);
             }
         }
         //Player with objects
         for (int i = 0; i<numberObjects; i++){
-            Collision.applyCollision(player, physicsObjects.get(i));
+            Collision.applyCollision(player, physicsObjects.get(i), player.velocities);
         }
 
         //Player with entities
         for (int i = 0; i<numberEntities; i++){
-            Collision.applyCollision(player, entities.get(i));
+            Collision.applyCollision(player, entities.get(i), player.velocities);
         }
 
         //entities with entities
         for (int i = 0; i<numberEntities-1; i++){
             for (int z = i+1; z<numberEntities; z++){
-                    Collision.applyCollision(entities.get(i), entities.get(z));
+                    Collision.applyCollision(entities.get(i), entities.get(z), entities.get(i).velocities);
                 }
             }
         }

@@ -59,7 +59,7 @@ public class Entity extends PhysicsObject{
             this.addVelocityZ(accelerationZ/time);
         }
         else if (pos.getZ()<hitbox.size[2]/2){
-            move(0,0,-(pos.getZ()-hitbox.size[2]/2));
+            moveTo(new Point(pos.getX(), pos.getY(),hitbox.size[2]/2 ));
             velocities[2] = 0;
         }
         else {
