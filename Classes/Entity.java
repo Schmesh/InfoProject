@@ -4,6 +4,8 @@ public class Entity extends PhysicsObject{
     protected double[] velocities = new double[]{0,0,0};
     protected double direction; //0 = positive X, rotation clockwise in degrees (90 ist positive y)
     protected double speed;
+    public boolean jumping = false;
+    public boolean onGround;
 
     protected double accelerationZ;
 
@@ -52,18 +54,21 @@ public class Entity extends PhysicsObject{
     }
 
     public void updateEntity(int time){
+        if(jumping==true && onGround == true){
+            velocities[2] = 5;
+            jumping = false;
+        }
         updateVelocityXY();
         updatePos(time);
         //Gravity
         if (pos.getZ()>hitbox.size[2]/2){
             this.addVelocityZ(accelerationZ/time);
+            onGround = false;
         }
-        else if (pos.getZ()<hitbox.size[2]/2){
+        else if (pos.getZ()<=hitbox.size[2]/2){
             moveTo(new Point(pos.getX(), pos.getY(),hitbox.size[2]/2 ));
             velocities[2] = 0;
-        }
-        else {
-            velocities[2] = 0;
+            onGround = true;
         }
     }
 

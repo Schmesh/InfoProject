@@ -46,23 +46,25 @@ public class Gamestate {
         //entities with objects
         for (int i = 0; i<numberEntities; i++){
             for (int z = 0; z<numberObjects; z++){
-                Collision.applyCollision(entities.get(i), physicsObjects.get(z), entities.get(i).velocities);
+                Collision.applyCollision(entities.get(i), physicsObjects.get(z));
             }
         }
         //Player with objects
         for (int i = 0; i<numberObjects; i++){
-            Collision.applyCollision(player, physicsObjects.get(i), player.velocities);
+            boolean b1 =Collision.applyCollision(player, physicsObjects.get(i));
+            if (b1 == true){player.onGround = true;}
         }
 
         //Player with entities
         for (int i = 0; i<numberEntities; i++){
-            Collision.applyCollision(player, entities.get(i), player.velocities);
+            boolean b1 =Collision.applyCollision(player, entities.get(i));
+            if (b1 == true){player.onGround = true;}
         }
 
         //entities with entities
         for (int i = 0; i<numberEntities-1; i++){
             for (int z = i+1; z<numberEntities; z++){
-                    Collision.applyCollision(entities.get(i), entities.get(z), entities.get(i).velocities);
+                    Collision.applyCollision(entities.get(i), entities.get(z));
                 }
             }
         }

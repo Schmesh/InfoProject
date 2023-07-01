@@ -30,17 +30,21 @@ public class PlayerKeyAdapter extends KeyAdapter {
             pla.dDown = true;
         }
         if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
-            pla.speed = 0.02;
+            pla.speed = 0.5;
         }
         if (e.getKeyCode() == KeyEvent.VK_CONTROL)
-            pla.speed = 1;
+            pla.speed = 2;
+        if (e.getKeyCode() == KeyEvent.VK_SPACE){
+            pla.jumping = true;
+        }
     }
+
+
     //jump noch hinzufügen brauche vincent
     @Override
     public void keyReleased(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_W) {
             pla.wDown = false;
-            System.out.println("keyreleased");
         }
         if (e.getKeyCode() == KeyEvent.VK_S) {
             pla.sDown = false;
@@ -52,10 +56,12 @@ public class PlayerKeyAdapter extends KeyAdapter {
             pla.dDown = false;
         }
         if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
-            pla.speed = 0.1;
+            pla.speed = 1;
         }
         if (e.getKeyCode() == KeyEvent.VK_CONTROL) {
-            pla.speed = 0.1;
+            pla.speed = 1;
         }
     }
+
+    
 }
