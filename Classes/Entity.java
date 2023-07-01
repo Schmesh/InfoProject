@@ -6,7 +6,6 @@ public class Entity extends PhysicsObject{
     protected double speed;
     public boolean jumping = false;
     public boolean onGround;
-
     protected double accelerationZ;
 
     Entity(Hitbox hitbox){

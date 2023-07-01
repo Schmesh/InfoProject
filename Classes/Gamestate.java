@@ -58,7 +58,6 @@ public class Gamestate {
         //Player with entities
         for (int i = 0; i<numberEntities; i++){
             boolean b1 =Collision.applyCollision(player, entities.get(i));
-            if (b1 == true){player.onGround = true;}
         }
 
         //entities with entities
