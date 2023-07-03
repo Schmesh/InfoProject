@@ -7,9 +7,10 @@ public class Gamestate {
     //Attribute sind alle Spielelemente
     protected ArrayList<Entity> entities = new ArrayList<>();
     protected ArrayList<PhysicsObject> physicsObjects = new ArrayList<>();
-    protected Player player = new Player();
+    protected Player player = new Player(0,0,5);
 
     Gamestate(){
+        physicsObjects.add(new PhysicsObject(new Hitbox(new double []{1,1,1}, new double[]{0,0,2})));
     }
 
     public ArrayList<Entity> returnEntities(){
@@ -29,11 +30,12 @@ public class Gamestate {
     }
 
     public void updateGame(){
-   //     System.out.println(player.velocities[0] + "  " + player.velocities[1] + "  " + player.velocities[2] + "    " +player.getPos().getX() + "  " + player.getPos().getY() + "  " + player.getPos().getZ());
+        System.out.println(player.velocities[0] + "  " + player.velocities[1] + "  " + player.velocities[2] + "    " +player.getPos().getX() + "  " + player.getPos().getY() + "  " + player.getPos().getZ());
         int numberEntities = entities.size();
         int numberObjects = physicsObjects.size();
-        System.out.println(player.movementDirection);
-        System.out.println(player.wDown);
+        //System.out.println(player.movementDirection);
+        //System.out.println(player.wDown);
+
         //update entities
         player.updateEntity(FPS);
         for (int i = 0; i<numberEntities; i++){
@@ -41,20 +43,21 @@ public class Gamestate {
         }
 
         //Collision
-        //entities with static objects
+        //entities with objects
         for (int i = 0; i<numberEntities; i++){
             for (int z = 0; z<numberObjects; z++){
-                Collision.applyCollision(physicsObjects.get(z), entities.get(i));
+                Collision.applyCollision(entities.get(i), physicsObjects.get(z));
             }
         }
         //Player with objects
         for (int i = 0; i<numberObjects; i++){
-            Collision.applyCollision(physicsObjects.get(i), player);
+            boolean b1 =Collision.applyCollision(player, physicsObjects.get(i));
+            if (b1 == true){player.onGround = true;}
         }
 
         //Player with entities
         for (int i = 0; i<numberEntities; i++){
-            Collision.applyCollision(entities.get(i), player);
+            boolean b1 =Collision.applyCollision(player, entities.get(i));
         }
 
         //entities with entities

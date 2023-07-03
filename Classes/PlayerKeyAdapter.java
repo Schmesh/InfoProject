@@ -1,22 +1,24 @@
 package Classes;
 
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.*;
 
-public class PlayerKeyadapter extends KeyAdapter {
+public class PlayerKeyAdapter extends KeyAdapter {
 
-    private Player pla;
+    private final Player pla;
 
-    PlayerKeyadapter(Player pla) {
+    PlayerKeyAdapter(Player pla) {
         this.pla = pla;
+
     }
 
+
+    @Override
     public void keyPressed(KeyEvent e) {
-        System.out.println("test");
         if (e.getKeyCode() == KeyEvent.VK_W) {
             pla.wDown = true;
-      //      System.out.println(pla.wDown);
-            System.out.println("wpressw");
+            //      System.out.println(pla.wDown);
         }
         if (e.getKeyCode() == KeyEvent.VK_S) {
             pla.sDown = true;
@@ -28,16 +30,21 @@ public class PlayerKeyadapter extends KeyAdapter {
             pla.dDown = true;
         }
         if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
-            pla.speed = 0.02;
+            pla.speed = 0.5;
         }
         if (e.getKeyCode() == KeyEvent.VK_CONTROL)
-            pla.speed = 1;
+            pla.speed = 2;
+        if (e.getKeyCode() == KeyEvent.VK_SPACE){
+            pla.jumping = true;
+        }
     }
-//jump noch hinzufügen brauche vincent
+
+
+    //jump noch hinzufügen brauche vincent
+    @Override
     public void keyReleased(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_W) {
             pla.wDown = false;
-            System.out.println("keyreleased");
         }
         if (e.getKeyCode() == KeyEvent.VK_S) {
             pla.sDown = false;
@@ -49,10 +56,15 @@ public class PlayerKeyadapter extends KeyAdapter {
             pla.dDown = false;
         }
         if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
-            pla.speed = 0.1;
+            pla.speed = 1;
         }
         if (e.getKeyCode() == KeyEvent.VK_CONTROL) {
-            pla.speed = 0.1;
+            pla.speed = 1;
+        }
+        if (e.getKeyCode() == KeyEvent.VK_SPACE){
+            pla.jumping = false;
         }
     }
+
+    
 }

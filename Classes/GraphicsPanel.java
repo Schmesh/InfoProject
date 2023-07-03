@@ -41,7 +41,7 @@ public class GraphicsPanel extends JPanel {
     }
     public void drawLines(ArrayList<double[]> lineArray){
         this.lineArray = lineArray;
-        image = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_RGB);
+        //image = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_RGB);
         repaint();
 
         //currentWindow.window.getContentPane().add(new JLabel(new ImageIcon(image)));
