@@ -12,7 +12,7 @@ public class Player extends Entity  {
     public boolean dDown = false;
     public boolean sDown = false;
     public boolean rightMouseDown = false;
-    private JPanel currentPanel;
+    public JPanel currentPanel;
     public PlayerMouseAdapter m1;
     public PlayerMouseListener ml1;
     public PlayerKeyAdapter k1;
@@ -20,8 +20,9 @@ public class Player extends Entity  {
         super(new Hitbox(new double[]{1,1,2}, new double[]{x,y,z}));
         speed = 1;
         movementDirection = -1;
+      //  direction = 90;
         k1 = new PlayerKeyAdapter(this);
-        //PlayerMouseAdapter m1 = new PlayerMouseAdapter(this);
+        m1 = new PlayerMouseAdapter(this);
         ml1 = new PlayerMouseListener(this);
 
     }
@@ -63,17 +64,23 @@ public class Player extends Entity  {
     public int[] mouseStart = new int[]{0, 0};
 
     public void processMouseMovement(MouseEvent mouseEvent) {
+
+
         int[] point = new int[]{mouseEvent.getPoint().x, mouseEvent.getPoint().y};
         int[] mouseMoveVector = new int[]{0, 0};
         mouseMoveVector[0] = point[0] - mouseStart[0];
         mouseMoveVector[1] = point[1] - mouseStart[1];
+
+        direction+= mouseMoveVector[0]*0.1;
+        mouseStart= new int[]{currentPanel.getWidth()/2, currentPanel.getHeight()/2};
         try {
             Robot robot = new Robot();
-            robot.mouseMove(mouseStart[0] + currentPanel.getLocationOnScreen().x, mouseStart[1] + currentPanel.getLocationOnScreen().y);
+            robot.mouseMove(currentPanel.getWidth()/2+currentPanel.getLocationOnScreen().x, currentPanel.getHeight()/2+currentPanel.getLocationOnScreen().y);
         } catch (AWTException ex) {
             ex.printStackTrace();
         }
-   /*     if (rot[0] >= 180) {
+        System.out.println(point[0]+"-"+mouseStart[0]);
+     /* if (rot[0] >= 180) {
             rot[0] -= 360;
         }
         if (rot[0] <= -180) {
@@ -85,7 +92,9 @@ public class Player extends Entity  {
             rotate(new double[]{mouseMoveVector[1] * -0.1, 0, mouseMoveVector[0] * -0.1});
         }
 
-    */
 
+    */
     }
+
+
 }
