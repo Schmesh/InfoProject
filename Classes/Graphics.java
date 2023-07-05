@@ -19,9 +19,9 @@ public class Graphics {
         testWindow.panel.addMouseListener(c1.m1);
         testWindow.panel.addMouseMotionListener(c1.ml1);
         testWindow.window.addKeyListener(gamestate.returnPlayer().k1);
-        //testWindow.panel.addMouseListener(c1.m1);
+        testWindow.panel.addMouseListener(gamestate.returnPlayer().m1);
         testWindow.panel.addMouseMotionListener(gamestate.returnPlayer().ml1);
-
+        gamestate.player.currentPanel = testWindow.panel;
 
         cuboidArray.add(new Cuboid(new double[]{1,1,1},new double[]{0,6.2,0}));
 
@@ -40,6 +40,7 @@ public class Graphics {
 
         c1.updateCamMovement();
         playerCam.pos= gamestate.player.pos.getXYZ();
+        playerCam.rot= new double[]{gamestate.player.tilt,0,gamestate.player.direction};
         testWindow.panel.clearLines();
         testWindow.renderedTris.clear();
         double cuboidArraySize = cuboidArray.size();
