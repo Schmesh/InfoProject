@@ -1,9 +1,11 @@
 package Classes;
 
 
+import java.awt.*;
+
 abstract public class Object {
     //Body
-
+    private Color color = new Color(100, 100, 100);
 
     private Triangle[] triangles;
 
@@ -28,4 +30,10 @@ abstract public class Object {
         return triangles;
     }
 
+    public void setColor(int r, int g, int b) {
+        color = new Color(r,g,b);
+        for (Triangle tri : getTriangles()){
+            tri.setColor(color);
+        }
+    }
 }

@@ -31,7 +31,7 @@ public class Graphics {
         cuboidArray.add(new Cuboid(new double[]{1,1,1},new double[]{-0.2,6,0}));
         cuboidArray.get(0).rotateZ(30);
         cuboidArray.get(0).rotateX(70);
-
+        cuboidArray.get(0).setColor(0,200,200);
         testLineArray.add(new TestLine(new double[][]{{0,0},{100,100}}));
 
     }
@@ -44,7 +44,7 @@ public class Graphics {
         testWindow.renderedTris.clear();
         double cuboidArraySize = cuboidArray.size();
         for (int i = 0;i< cuboidArray.size();i++){
-            testWindow.renderObjectWireframe(cuboidArray.get(i),playerCam);
+            testWindow.renderObjectWireframe(cuboidArray.get(i),c1);
         }
 
         //for (TestLine line : testLineArray){
