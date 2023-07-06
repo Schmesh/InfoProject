@@ -68,10 +68,10 @@ public class PlayerKeyAdapter extends KeyAdapter {
             pla.dDown = false;
         }
         if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
-            //pla.speed = 3;
+            pla.speed = 6;
         }
         if (e.getKeyCode() == KeyEvent.VK_CONTROL) {
-            pla.speed = 3;
+            //pla.speed = 6;
         }
         if (e.getKeyCode() == KeyEvent.VK_SPACE){
             pla.jumping = false;
