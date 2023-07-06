@@ -17,6 +17,7 @@ public class Player extends Entity  {
     public PlayerMouseAdapter m1;
     public PlayerMouseListener ml1;
     public PlayerKeyAdapter k1;
+    public Point spawn;
     Player(double x, double y, double z) {
         super(new Hitbox(new double[]{1,1,2}, new double[]{x,y,z}));
         speed = 3;
