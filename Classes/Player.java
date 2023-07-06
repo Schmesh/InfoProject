@@ -11,6 +11,7 @@ public class Player extends Entity  {
     public boolean aDown = false;
     public boolean dDown = false;
     public boolean sDown = false;
+    public boolean altDown = false;
     public boolean rightMouseDown = false;
     public JPanel currentPanel;
     public PlayerMouseAdapter m1;
@@ -18,7 +19,7 @@ public class Player extends Entity  {
     public PlayerKeyAdapter k1;
     Player(double x, double y, double z) {
         super(new Hitbox(new double[]{1,1,2}, new double[]{x,y,z}));
-        speed = 6;
+        speed = 3;
         movementDirection = -1;
       //  direction = 90;
         k1 = new PlayerKeyAdapter(this);
@@ -71,32 +72,38 @@ public class Player extends Entity  {
         mouseMoveVector[0] = point[0] - mouseStart[0];
         mouseMoveVector[1] = point[1] - mouseStart[1];
         mouseStart= new int[]{currentPanel.getWidth()/2, currentPanel.getHeight()/2};
+        if (!altDown){
 
-        direction+= mouseMoveVector[0]*0.13;
+            direction+= mouseMoveVector[0]*0.13;
 
-        try {
-            Robot robot = new Robot();
-            robot.mouseMove(currentPanel.getWidth()/2+currentPanel.getLocationOnScreen().x, currentPanel.getHeight()/2+currentPanel.getLocationOnScreen().y);
-        } catch (AWTException ex) {
-            ex.printStackTrace();
+            if (tilt >= 180) {
+                tilt -= 360;
+            }
+            if (tilt <= -180) {
+                tilt += 360;
+            }
+            if (tilt <= 90 && tilt >= -90) {
+                tilt += mouseMoveVector[1]*0.13;
+            } else {
+                tilt -= mouseMoveVector[1]*0.13;
+            }
+
+
+
         }
+
+            System.out.println(tilt);
+            try {
+                Robot robot = new Robot();
+                robot.mouseMove(currentPanel.getWidth()/2+currentPanel.getLocationOnScreen().x, currentPanel.getHeight()/2+currentPanel.getLocationOnScreen().y);
+            } catch (AWTException ex) {
+                ex.printStackTrace();
+            }
+        }
+
 
         //System.out.println(point[0]+"-"+mouseStart[0]);
-     /* if (rot[0] >= 180) {
-            rot[0] -= 360;
-        }
-        if (rot[0] <= -180) {
-            rot[0] += 360;
-        }
-        if (rot[0] <= 90 && rot[0] >= -90) {
-            rotate(new double[]{mouseMoveVector[1] * -0.1, 0, mouseMoveVector[0] * 0.1});
-        } else {
-            rotate(new double[]{mouseMoveVector[1] * -0.1, 0, mouseMoveVector[0] * -0.1});
-        }
 
-
-    */
-    }
 
 
 }
