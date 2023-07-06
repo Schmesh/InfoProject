@@ -1,5 +1,7 @@
 package Classes;
 
+import java.awt.*;
+
 public class Cuboid extends Object{
 
     private double[] pos;
@@ -72,6 +74,7 @@ public class Cuboid extends Object{
         /*
         */
         this.setTriangles(cuboidTriangles);
+
 
 
         //====update triangles and remove unnecessary objects====

@@ -80,9 +80,9 @@ public class Window {
                     //if y > 0 only temporary approach until clipping is implemented
 
                     if (translatedTri.p[0].getXYZ()[1] > 0&&translatedTri.p[1].getXYZ()[1] > 0&&translatedTri.p[2].getXYZ()[1] > 0){ //&&renderTools.normDotProduct(renderTools.getNormal(object.getTriangles()[i]), translatedTri.p[0].getXYZ()) < 0
-                    lines.add(new double[]{renderedTri.p[0].getXYZ()[0],renderedTri.p[0].getXYZ()[2], renderedTri.p[1].getXYZ()[0], renderedTri.p[1].getXYZ()[2]});
-                    lines.add(new double[]{renderedTri.p[1].getXYZ()[0],renderedTri.p[1].getXYZ()[2], renderedTri.p[2].getXYZ()[0], renderedTri.p[2].getXYZ()[2]});
-                    lines.add(new double[]{renderedTri.p[2].getXYZ()[0],renderedTri.p[2].getXYZ()[2], renderedTri.p[0].getXYZ()[0], renderedTri.p[0].getXYZ()[2]});
+                    lines.add(new double[]{renderedTri.p[0].getXYZ()[0],renderedTri.p[0].getXYZ()[2], renderedTri.p[1].getXYZ()[0], renderedTri.p[1].getXYZ()[2],object.getTriangles()[i].color.getRed(),object.getTriangles()[i].color.getGreen(),object.getTriangles()[i].color.getBlue()});
+                    lines.add(new double[]{renderedTri.p[1].getXYZ()[0],renderedTri.p[1].getXYZ()[2], renderedTri.p[2].getXYZ()[0], renderedTri.p[2].getXYZ()[2],object.getTriangles()[i].color.getRed(),object.getTriangles()[i].color.getGreen(),object.getTriangles()[i].color.getBlue()});
+                    lines.add(new double[]{renderedTri.p[2].getXYZ()[0],renderedTri.p[2].getXYZ()[2], renderedTri.p[0].getXYZ()[0], renderedTri.p[0].getXYZ()[2],object.getTriangles()[i].color.getRed(),object.getTriangles()[i].color.getGreen(),object.getTriangles()[i].color.getBlue()});
                     //double[] normalEnd = renderTools.project3d2d(    renderTools.addVector(object.getTriangles()[i].p[0].getXYZ() , renderTools.getNormal(object.getTriangles()[i])),fov,distanceToScreen,viewDistance,panel.getHeight(),panel.getWidth());
                     //lines.add(new double[]{renderedTri.p[0].getXYZ()[0],renderedTri.p[0].getXYZ()[2],normalEnd[0],normalEnd[2]});
 

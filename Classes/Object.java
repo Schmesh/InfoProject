@@ -5,7 +5,7 @@ import java.awt.*;
 
 abstract public class Object {
     //Body
-    private Color color = new Color(100, 100, 100);
+    private Color color;
 
     private Triangle[] triangles;
 
@@ -14,8 +14,11 @@ abstract public class Object {
 
 
     Object(double[]xyz, int numberTriangles){
+        new Color(255, 255, 255);
         triangles = new Triangle[numberTriangles];
         this.xyz = xyz;
+
+
     }
 
     public double[] getCoords(){
@@ -24,6 +27,7 @@ abstract public class Object {
 
     public void setTriangles(Triangle[] triangles) {
         this.triangles = triangles;
+
     }
 
     public Triangle[] getTriangles(){

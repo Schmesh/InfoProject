@@ -3,7 +3,7 @@ package Classes;
 import java.awt.*;
 
 public class Triangle {
-    public Color color = new Color(100,100,100);
+    public Color color = new Color(255,255,255);
 
     public Point[] p = new Point[3];;
 

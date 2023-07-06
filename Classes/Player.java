@@ -18,7 +18,7 @@ public class Player extends Entity  {
     public PlayerKeyAdapter k1;
     Player(double x, double y, double z) {
         super(new Hitbox(new double[]{1,1,2}, new double[]{x,y,z}));
-        speed = 1;
+        speed = 6;
         movementDirection = -1;
       //  direction = 90;
         k1 = new PlayerKeyAdapter(this);
@@ -72,7 +72,7 @@ public class Player extends Entity  {
         mouseMoveVector[1] = point[1] - mouseStart[1];
         mouseStart= new int[]{currentPanel.getWidth()/2, currentPanel.getHeight()/2};
 
-        direction+= mouseMoveVector[0]*0.1;
+        direction+= mouseMoveVector[0]*0.13;
 
         try {
             Robot robot = new Robot();
@@ -81,7 +81,7 @@ public class Player extends Entity  {
             ex.printStackTrace();
         }
 
-        System.out.println(point[0]+"-"+mouseStart[0]);
+        //System.out.println(point[0]+"-"+mouseStart[0]);
      /* if (rot[0] >= 180) {
             rot[0] -= 360;
         }

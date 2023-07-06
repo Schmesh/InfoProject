@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Graphics {
     Window testWindow;
-    SpectatorCam c1;
+    //SpectatorCam c1;
 
     Camera playerCam;
 
@@ -14,11 +14,12 @@ public class Graphics {
     Graphics(Gamestate gamestate){
         testWindow = new Window();
 
-        playerCam = new Camera(new double[]{0,0,0},new double[]{0,0,0},90);
+
         //c1 = new SpectatorCam(new double[]{0,0,0},new double[]{0,0,0},90, testWindow.panel);
         //testWindow.window.addKeyListener(c1.k1);
         //testWindow.panel.addMouseListener(c1.m1);
         //testWindow.panel.addMouseMotionListener(c1.ml1);
+        playerCam = new Camera(new double[]{0,0,0},new double[]{0,0,0},90);
         testWindow.window.addKeyListener(gamestate.returnPlayer().k1);
         testWindow.panel.addMouseListener(gamestate.returnPlayer().m1);
         testWindow.panel.addMouseMotionListener(gamestate.returnPlayer().ml1);

@@ -135,8 +135,9 @@ public class GraphicsPanel extends JPanel {
         }
 //================
         int lineArraySize = lineArray.size();
-        g2d.setColor(Color.white);
+
         for (int i = 0; i < lineArraySize;i++){
+            g2d.setColor(new Color((int)(Math.floor(lineArray.get(i)[4])), (int)(Math.floor(lineArray.get(i)[5])), (int)(Math.floor(lineArray.get(i)[6]))));
             g2d.drawLine((int)Math.round(lineArray.get(i)[0]),(int)Math.round(lineArray.get(i)[1]),(int)Math.round(lineArray.get(i)[2]),(int)Math.round(lineArray.get(i)[3]));
         }
     }

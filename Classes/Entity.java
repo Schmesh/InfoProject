@@ -10,7 +10,7 @@ public class Entity extends PhysicsObject{
 
     Entity(Hitbox hitbox){
         super(hitbox);
-        accelerationZ = -9.81;
+        accelerationZ = -25; //-9.81;
     }
 
     public void setSpeed(double speed){this.speed = speed;}
@@ -54,7 +54,7 @@ public class Entity extends PhysicsObject{
 
     public void updateEntity(int time){
         if(jumping==true && onGround == true){
-            velocities[2] = 5;
+            velocities[2] = 10;
             jumping = false;
         }
         updateVelocityXY();
