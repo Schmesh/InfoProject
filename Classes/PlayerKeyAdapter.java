@@ -47,6 +47,9 @@ public class PlayerKeyAdapter extends KeyAdapter {
 
         if (e.getKeyCode() == KeyEvent.VK_Z){
             pla.moveTo(new Point(pla.currentSpawn.getX(),pla.currentSpawn.getY(),pla.currentSpawn.getZ()));
+            pla.direction = 0;
+            pla.tilt = 0;
+            pla.mouseLocked = true;
         }
 
     }

@@ -18,6 +18,7 @@ public class Player extends Entity  {
     public PlayerMouseListener ml1;
     public PlayerKeyAdapter k1;
 
+    public boolean mouseLocked = false;
     public Point currentSpawn = new Point(0,0,0);
 
     Player(double x, double y, double z) {
@@ -78,7 +79,7 @@ public class Player extends Entity  {
         if (!altDown){
 
 
-
+        if (mouseLocked==false){
             if (tilt >= 180) {
                 tilt -= 360;
             }
@@ -92,6 +93,12 @@ public class Player extends Entity  {
                 tilt -= mouseMoveVector[1]*0.13;
                 direction-= mouseMoveVector[0]*0.13;
             }
+
+        }else {
+            mouseLocked = false;
+        }
+
+
 
             try {
                 Robot robot = new Robot();

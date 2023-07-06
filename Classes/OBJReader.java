@@ -14,14 +14,14 @@ public class OBJReader {
     static public Triangle[] convertOBJToTris(String filename){
         Triangle[] tris = new Triangle[]{};
 
-        final String fileName = "rock.obj";
+        final String fileName = "./Classes/rock.obj";
 
 
 
         try {
-           //var file = new FileInputStream(fileName);
+           var file = new FileInputStream(fileName);
 
-           //System.out.println(file.read());
+           //System.out.println(file.read().);
         } catch (Exception e) {
             System.out.println("ouchie when loading obj file");
             e.printStackTrace();
