@@ -34,6 +34,8 @@ public class Graphics {
         cuboidArray.get(0).setColor(0,200,200);
         testLineArray.add(new TestLine(new double[][]{{0,0},{100,100}}));
 
+        OBJReader.convertOBJToTris("rock.obj");
+
     }
 
     public void render(Gamestate gamestate){
