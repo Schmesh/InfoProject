@@ -13,6 +13,12 @@ public class Gamestate {
         physicsObjects.add(new PhysicsObject(new Hitbox(new double []{1,1,1}, new double[]{0,0,2})));
     }
 
+    public void loadMap(Map map){
+        physicsObjects = map.Cuboids;
+        player.moveTo(map.spawn);
+        player.spawn = map.spawn;
+    }
+
     public ArrayList<Entity> returnEntities(){
       return entities;
     }
