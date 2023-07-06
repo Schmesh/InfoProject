@@ -7,7 +7,7 @@ public class Gamestate {
     //Attribute sind alle Spielelemente
     protected ArrayList<Entity> entities = new ArrayList<>();
     protected ArrayList<PhysicsObject> physicsObjects = new ArrayList<>();
-    protected Player player = new Player(0,0,5);
+    protected Player player = new Player(0,0,21);
 
     Gamestate(){
         physicsObjects.add(new PhysicsObject(new Hitbox(new double []{1,1,1}, new double[]{0,0,2})));
