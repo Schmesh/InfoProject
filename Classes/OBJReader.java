@@ -2,6 +2,7 @@ package Classes;
 
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -10,13 +11,19 @@ public class OBJReader {
     OBJReader(){
 
     }
-    public Triangle[] convertOBJToTris(String filename){
+    static public Triangle[] convertOBJToTris(String filename){
         Triangle[] tris = new Triangle[]{};
 
+        final String fileName = "rock.obj";
+
+
+
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(filename));
-            System.out.println(reader.readLine());
-        } catch (IOException e) {
+           //var file = new FileInputStream(fileName);
+
+           //System.out.println(file.read());
+        } catch (Exception e) {
+            System.out.println("ouchie when loading obj file");
             e.printStackTrace();
         }
 
