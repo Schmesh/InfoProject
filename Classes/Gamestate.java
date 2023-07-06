@@ -8,18 +8,16 @@ public class Gamestate {
     protected ArrayList<Entity> entities = new ArrayList<>();
     protected ArrayList<PhysicsObject> physicsObjects = new ArrayList<>();
     protected Player player = new Player(0,0,21);
-
     public Map map = new Map();
     Gamestate(){
 
         //physicsObjects.add(new PhysicsObject(new Hitbox(new double []{1,1,1}, new double[]{0,0,2})));
-            loadMap();
+        loadMap(map);
     }
 
     public void loadMap(Map map){
         physicsObjects = map.Cuboids;
-        player.moveTo(map.spawn);
-        player.spawn = map.spawn;
+        player.pos = map.spawn;
     }
 
     public ArrayList<Entity> returnEntities(){
@@ -42,7 +40,7 @@ public class Gamestate {
         this.physicsObjects = map.Cuboids;
     }
     public void updateGame(){
-
+        System.out.println(map.spawn.getX() +" " + map.spawn.getY() + " " + map.spawn.getZ());
         //System.out.println(player.velocities[0] + "  " + player.velocities[1] + "  " + player.velocities[2] + "    " +player.getPos().getX() + "  " + player.getPos().getY() + "  " + player.getPos().getZ());
 
         int numberEntities = entities.size();
