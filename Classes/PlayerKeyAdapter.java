@@ -32,14 +32,23 @@ public class PlayerKeyAdapter extends KeyAdapter {
         if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
             //pla.speed = 3;
         }
-        if (e.getKeyCode() == KeyEvent.VK_CONTROL)
+        if (e.getKeyCode() == KeyEvent.VK_CONTROL){
             pla.speed = 6;
+        }
+
         if (e.getKeyCode() == KeyEvent.VK_SPACE){
             pla.jumping = true;
         }
+
+        if (e.getKeyCode()== KeyEvent.VK_ALT){
+            pla.altDown = true;
+        }
+
+
         if (e.getKeyCode() == KeyEvent.VK_Z){
             pla.moveTo(pla.spawn);
         }
+
     }
 
 
@@ -66,6 +75,9 @@ public class PlayerKeyAdapter extends KeyAdapter {
         }
         if (e.getKeyCode() == KeyEvent.VK_SPACE){
             pla.jumping = false;
+        }
+        if (e.getKeyCode()== KeyEvent.VK_ALT){
+            pla.altDown = false;
         }
     }
 
