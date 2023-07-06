@@ -13,11 +13,12 @@ public class Graphics {
     ArrayList<TestLine> testLineArray = new ArrayList();
     Graphics(Gamestate gamestate){
         testWindow = new Window();
-        c1 = new SpectatorCam(new double[]{0,0,0},new double[]{0,0,0},90, testWindow.panel);
+
         playerCam = new Camera(new double[]{0,0,0},new double[]{0,0,0},90);
-        testWindow.window.addKeyListener(c1.k1);
-        testWindow.panel.addMouseListener(c1.m1);
-        testWindow.panel.addMouseMotionListener(c1.ml1);
+        //c1 = new SpectatorCam(new double[]{0,0,0},new double[]{0,0,0},90, testWindow.panel);
+        //testWindow.window.addKeyListener(c1.k1);
+        //testWindow.panel.addMouseListener(c1.m1);
+        //testWindow.panel.addMouseMotionListener(c1.ml1);
         testWindow.window.addKeyListener(gamestate.returnPlayer().k1);
         testWindow.panel.addMouseListener(gamestate.returnPlayer().m1);
         testWindow.panel.addMouseMotionListener(gamestate.returnPlayer().ml1);
@@ -38,14 +39,14 @@ public class Graphics {
 
     public void render(Gamestate gamestate){
 
-        c1.updateCamMovement();
+        //c1.updateCamMovement();
         playerCam.pos= gamestate.player.pos.getXYZ();
         playerCam.rot= new double[]{gamestate.player.tilt,0,gamestate.player.direction};
         testWindow.panel.clearLines();
         testWindow.renderedTris.clear();
         double cuboidArraySize = cuboidArray.size();
         for (int i = 0;i< cuboidArray.size();i++){
-            testWindow.renderObjectWireframe(cuboidArray.get(i),c1);
+            testWindow.renderObjectWireframe(cuboidArray.get(i),playerCam);
         }
 
         //for (TestLine line : testLineArray){

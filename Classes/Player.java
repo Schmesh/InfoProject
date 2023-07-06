@@ -70,15 +70,17 @@ public class Player extends Entity  {
         int[] mouseMoveVector = new int[]{0, 0};
         mouseMoveVector[0] = point[0] - mouseStart[0];
         mouseMoveVector[1] = point[1] - mouseStart[1];
+        mouseStart= new int[]{currentPanel.getWidth()/2, currentPanel.getHeight()/2};
 
         direction+= mouseMoveVector[0]*0.1;
-        mouseStart= new int[]{currentPanel.getWidth()/2, currentPanel.getHeight()/2};
+
         try {
             Robot robot = new Robot();
             robot.mouseMove(currentPanel.getWidth()/2+currentPanel.getLocationOnScreen().x, currentPanel.getHeight()/2+currentPanel.getLocationOnScreen().y);
         } catch (AWTException ex) {
             ex.printStackTrace();
         }
+
         System.out.println(point[0]+"-"+mouseStart[0]);
      /* if (rot[0] >= 180) {
             rot[0] -= 360;

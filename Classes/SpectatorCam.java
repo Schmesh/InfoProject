@@ -34,7 +34,7 @@ public class SpectatorCam extends Camera{
         int[] mouseMoveVector = new int[]{0,0};
         mouseMoveVector[0] = point[0] - mouseStart[0];
         mouseMoveVector[1] = point[1] - mouseStart[1];
-        System.out.println(point[0]+"-"+mouseStart[0]);
+        //System.out.println(point[0]+"-"+mouseStart[0]);
         try {
             Robot robot = new Robot();
             robot.mouseMove(mouseStart[0]+currentPanel.getLocationOnScreen().x, mouseStart[1]+currentPanel.getLocationOnScreen().y);
