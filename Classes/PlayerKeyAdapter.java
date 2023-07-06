@@ -37,6 +37,9 @@ public class PlayerKeyAdapter extends KeyAdapter {
         if (e.getKeyCode() == KeyEvent.VK_SPACE){
             pla.jumping = true;
         }
+        if (e.getKeyCode() == KeyEvent.VK_Z){
+            pla.moveTo(pla.spawn);
+        }
     }
 
 
