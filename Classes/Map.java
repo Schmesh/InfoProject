@@ -10,6 +10,8 @@ public class Map {
         Cuboids.add(new PhysicsObject(new Hitbox(new double[]{8,8,1},new double[]{1/*x*/,10/*y*/,20/*z*/})));
         Cuboids.add(new PhysicsObject(new Hitbox(new double[]{6,6,1},new double[]{2/*x*/,18/*y*/,20/*z*/})));
         Cuboids.add(new PhysicsObject(new Hitbox(new double[]{2,2,1},new double[]{3/*x*/,22/*y*/,20/*z*/})));
+        Cuboids.add(new PhysicsObject(new Hitbox(new double[]{1,1,1},new double[]{3/*x*/,24/*y*/,20/*z*/})));
+
 
 
 
