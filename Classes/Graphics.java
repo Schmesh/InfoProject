@@ -19,7 +19,7 @@ public class Graphics {
         //testWindow.window.addKeyListener(c1.k1);
         //testWindow.panel.addMouseListener(c1.m1);
         //testWindow.panel.addMouseMotionListener(c1.ml1);
-        playerCam = new Camera(new double[]{0,0,0},new double[]{0,0,0},90);
+        playerCam = new Camera(new double[]{0,0,0},new double[]{0,0,0},110);
         testWindow.window.addKeyListener(gamestate.returnPlayer().k1);
         testWindow.panel.addMouseListener(gamestate.returnPlayer().m1);
         testWindow.panel.addMouseMotionListener(gamestate.returnPlayer().ml1);

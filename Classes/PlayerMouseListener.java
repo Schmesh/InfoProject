@@ -11,13 +11,13 @@ public class PlayerMouseListener implements MouseMotionListener {
 
     @Override
     public void mouseDragged(MouseEvent e) {
-       if (pla.rightMouseDown){
-            pla.processMouseMovement(e);
-        }
+      // if (pla.rightMouseDown){
+      //      pla.processMouseMovement(e);
+      //  }
    }
 
     @Override
     public void mouseMoved(MouseEvent e) {
-   //     pla.processMouseMovement(e);
+      pla.processMouseMovement(e);
     }
 }
