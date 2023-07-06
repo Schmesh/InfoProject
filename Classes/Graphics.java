@@ -34,14 +34,14 @@ public class Graphics {
         cuboidArray.get(0).setColor(0,200,200);
         testLineArray.add(new TestLine(new double[][]{{0,0},{100,100}}));
 
-        OBJReader.convertOBJToTris("rock.obj");
+        OBJReader.convertOBJToTris("./Classes/rock.obj");
 
     }
 
     public void render(Gamestate gamestate){
 
         //c1.updateCamMovement();
-        playerCam.pos= gamestate.player.pos.getXYZ();
+        playerCam.pos= renderTools.addVector(gamestate.player.pos.getXYZ(), new double[]{0,0,0.3}) ;
         playerCam.rot= new double[]{gamestate.player.tilt,0,gamestate.player.direction};
         testWindow.panel.clearLines();
         testWindow.renderedTris.clear();
@@ -60,6 +60,14 @@ public class Graphics {
         testWindow.panel.lineArray = testWindow.lines;
         testWindow.panel.renderedTris = testWindow.renderedTris;
         testWindow.panel.drawLines(testWindow.lines);
+        //if (gamestate.player.altDown){
+        //    // Create a transparent image
+        //    Image image = Toolkit.getDefaultToolkit().createImage(new byte[] { 0 });
+//
+        //    // Create a custom cursor using the transparent image
+        //    Cursor invisibleCursor = Toolkit.getDefaultToolkit().createCustomCursor(image, new Point(0, 0), "invisibleCursor");
+//
+        //}
     }
 
 

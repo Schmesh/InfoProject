@@ -21,7 +21,8 @@ public class OBJReader {
         try {
            var file = new FileInputStream(fileName);
 
-           //System.out.println(file.read().);
+          int data;
+          //while ((data = file.read()))
         } catch (Exception e) {
             System.out.println("ouchie when loading obj file");
             e.printStackTrace();
