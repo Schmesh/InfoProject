@@ -5,17 +5,17 @@ import java.awt.*;
 public class Triangle {
     public Color color = new Color(255,255,255);
 
-    public Point[] p = new Point[3];;
+    public Punkt[] p = new Punkt[3];;
 
 
 
-    Triangle(Point[] pInput){
+    Triangle(Punkt[] pInput){
         //Points
         p[0] = pInput[0];
         p[1] = pInput[1];
         p[2] = pInput[2];
     }
-    Triangle(Point[] pInput,Color color){
+    Triangle(Punkt[] pInput, Color color){
         //Points
         p[0] = pInput[0];
         p[1] = pInput[1];

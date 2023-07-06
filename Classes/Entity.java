@@ -25,7 +25,7 @@ public class Entity extends PhysicsObject{
         hitbox.move(dx,dy,dz);
     }
 
-    public void moveTo(Point pos){
+    public void moveTo(Punkt pos){
         this.pos.setXyz(pos.xyz);
         hitbox.moveTo(pos);
     }
@@ -65,7 +65,7 @@ public class Entity extends PhysicsObject{
             onGround = false;
         }
         else if (pos.getZ()<=hitbox.size[2]/2){
-            moveTo(new Point(pos.getX(), pos.getY(),hitbox.size[2]/2 ));
+            moveTo(new Punkt(pos.getX(), pos.getY(),hitbox.size[2]/2 ));
             velocities[2] = 0;
             onGround = true;
         }

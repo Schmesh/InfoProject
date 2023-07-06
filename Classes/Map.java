@@ -3,7 +3,7 @@ package Classes;
 import java.util.ArrayList;
 
 public class Map {
-    public Point spawn = new Point(0,0,21.5);;
+    public Punkt spawn = new Punkt(0,0,21.5);;
     ArrayList<PhysicsObject> Cuboids= new ArrayList();
     Map(){
         Cuboids.add(new PhysicsObject(new Hitbox(new double[]{10,10,1},new double[]{0/*x*/,0/*y*/,20/*z*/})));

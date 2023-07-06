@@ -1,8 +1,6 @@
 package Classes;
 
-import javax.swing.*;
 import java.awt.event.*;
-import java.awt.*;
 
 public class PlayerKeyAdapter extends KeyAdapter {
 
@@ -47,7 +45,7 @@ public class PlayerKeyAdapter extends KeyAdapter {
 
 
         if (e.getKeyCode() == KeyEvent.VK_Z){
-            pla.moveTo(new Point(pla.currentSpawn.getX(),pla.currentSpawn.getY(),pla.currentSpawn.getZ()));
+            pla.moveTo(new Punkt(pla.currentSpawn.getX(),pla.currentSpawn.getY(),pla.currentSpawn.getZ()));
             pla.direction = 0;
             pla.tilt = 0;
             pla.mouseLocked = true;

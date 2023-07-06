@@ -1,17 +1,17 @@
 package Classes;
 
-public class Point {
+public class Punkt {
     //Coordinates X-Y Plane Z=height
     public double[] xyz;
 
-    Point(double x, double y, double z){
+    Punkt(double x, double y, double z){
         xyz = new double[3];
         xyz[0] = x;
         xyz[1] = y;
         xyz[2] = z;
     }
 
-    Point(double[] xyz){
+    Punkt(double[] xyz){
         this.xyz = xyz;
     }
 

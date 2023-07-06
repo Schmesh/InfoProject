@@ -1,6 +1,5 @@
 package Classes;
 
-import java.awt.*;
 import java.util.ArrayList;
 
 public class Gamestate {
@@ -22,8 +21,8 @@ public class Gamestate {
 
     public void loadMap(Map map){
         physicsObjects = map.Cuboids;
-        player.currentSpawn = new Point(map.spawn.getX(),map.spawn.getY(),map.spawn.getZ());
-        player.moveTo(new Point(player.currentSpawn.getX(),player.currentSpawn.getY(),player.currentSpawn.getZ()));
+        player.currentSpawn = new Punkt(map.spawn.getX(),map.spawn.getY(),map.spawn.getZ());
+        player.moveTo(new Punkt(player.currentSpawn.getX(),player.currentSpawn.getY(),player.currentSpawn.getZ()));
         player.mouseLocked = true;
         player.direction = 0;
         player.tilt = 0;
@@ -90,7 +89,7 @@ public class Gamestate {
             }
 
         if (player.pos.getZ() < 5){
-            player.moveTo(new Point(player.currentSpawn.getX(),player.currentSpawn.getY(),player.currentSpawn.getZ()));
+            player.moveTo(new Punkt(player.currentSpawn.getX(),player.currentSpawn.getY(),player.currentSpawn.getZ()));
             player.mouseLocked = true;
             player.direction = 0;
             player.tilt = 0;

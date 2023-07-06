@@ -4,6 +4,7 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class Graphics {
+
     Window testWindow;
     //SpectatorCam c1;
 
