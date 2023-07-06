@@ -13,14 +13,19 @@ public class Gamestate {
 
     public Graphics graphics;
 
+    int currentMap = 0;
 
     Gamestate(){
 
         //physicsObjects.add(new PhysicsObject(new Hitbox(new double []{1,1,1}, new double[]{0,0,2})));
-        loadMap(map);
+        loadMap(0);
     }
 
-    public void loadMap(Map map){
+    public void loadMap(int index){
+        map.Cuboids = map.maps[index];
+        map.spawn = map.spawns[index];
+        map.end = map.ends[index];
+
         physicsObjects = map.Cuboids;
         player.currentSpawn = new Point(map.spawn.getX(),map.spawn.getY(),map.spawn.getZ());
         player.moveTo(new Point(player.currentSpawn.getX(),player.currentSpawn.getY(),player.currentSpawn.getZ()));
@@ -46,9 +51,7 @@ public class Gamestate {
         return FPS;
     }
 
-    public void loadMap(){
-        this.physicsObjects = map.Cuboids;
-    }
+
     public void updateGame(){
         //System.out.println(map.spawn.getX() +" " + map.spawn.getY() + " " + map.spawn.getZ());
         //System.out.println(player.velocities[0] + "  " + player.velocities[1] + "  " + player.velocities[2] + "    " +player.getPos().getX() + "  " + player.getPos().getY() + "  " + player.getPos().getZ());
@@ -95,7 +98,10 @@ public class Gamestate {
             player.direction = 0;
             player.tilt = 0;
         }
-
+        if (player.pos.getY() > map.end){
+            currentMap++;
+            loadMap(1);
+        }
 
         }
 

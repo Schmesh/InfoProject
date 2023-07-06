@@ -32,6 +32,7 @@ public class Player extends Entity  {
 
     }
     public void updateMovementDirection() {
+
         if(wDown&&aDown)
             movementDirection = 315+direction;
         else if(wDown&&dDown)

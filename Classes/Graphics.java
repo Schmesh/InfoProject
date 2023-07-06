@@ -26,12 +26,12 @@ public class Graphics {
         testWindow.panel.addMouseMotionListener(gamestate.returnPlayer().ml1);
         gamestate.player.currentPanel = testWindow.panel;
 
-        cuboidArray.add(new Cuboid(new double[]{1,1,1},new double[]{0,6.2,0}));
+        cuboidArray.add(new Cuboid(new double[]{5,7,1},new double[]{0,6.2,0}));
 
 
 
-        //cuboidArray.get(0).rotateZ(30);
-        //cuboidArray.get(0).rotateX(70);
+        cuboidArray.get(0).rotateZ(10);
+        cuboidArray.get(0).rotateX(30);
         cuboidArray.get(0).setColor(0,200,200);
         testLineArray.add(new TestLine(new double[][]{{0,0},{100,100}}));
 
@@ -52,6 +52,7 @@ public class Graphics {
         }
         for (int i = 0;i< gamestate.physicsObjects.size();i++){
             Cuboid temporaryCuboid = new Cuboid(gamestate.physicsObjects.get(i).hitbox.size, gamestate.physicsObjects.get(i).pos.getXYZ() );
+            temporaryCuboid.setColor(gamestate.physicsObjects.get(i).color.getRed(),gamestate.physicsObjects.get(i).color.getGreen(),gamestate.physicsObjects.get(i).color.getBlue());
             testWindow.renderObjectWireframe(temporaryCuboid,playerCam);
         }
         //for (TestLine line : testLineArray){
