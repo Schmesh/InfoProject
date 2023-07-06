@@ -22,7 +22,9 @@ public class OBJReader {
            var file = new FileInputStream(fileName);
 
           int data;
-          //while ((data = file.read()))
+          while ((data = file.read()) != -1){
+            System.out.println((char)data);
+          }
         } catch (Exception e) {
             System.out.println("ouchie when loading obj file");
             e.printStackTrace();

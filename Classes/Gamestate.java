@@ -88,6 +88,15 @@ public class Gamestate {
                     Collision.applyCollision(entities.get(i), entities.get(z));
                 }
             }
+
+        if (player.pos.getZ() < 5){
+            player.moveTo(new Point(player.currentSpawn.getX(),player.currentSpawn.getY(),player.currentSpawn.getZ()));
+            player.mouseLocked = true;
+            player.direction = 0;
+            player.tilt = 0;
+        }
+
+
         }
 
 

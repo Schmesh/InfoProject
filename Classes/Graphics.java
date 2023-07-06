@@ -1,5 +1,6 @@
 package Classes;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 public class Graphics {
@@ -60,14 +61,14 @@ public class Graphics {
         testWindow.panel.lineArray = testWindow.lines;
         testWindow.panel.renderedTris = testWindow.renderedTris;
         testWindow.panel.drawLines(testWindow.lines);
-        //if (gamestate.player.altDown){
-        //    // Create a transparent image
-        //    Image image = Toolkit.getDefaultToolkit().createImage(new byte[] { 0 });
-//
-        //    // Create a custom cursor using the transparent image
-        //    Cursor invisibleCursor = Toolkit.getDefaultToolkit().createCustomCursor(image, new Point(0, 0), "invisibleCursor");
-//
-        //}
+        if (gamestate.player.altDown){
+            // Create a transparent image
+            //Image image = Toolkit.getDefaultToolkit().createImage(new byte[] { 0 });
+
+            // Create a custom cursor using the transparent image
+            //Cursor invisibleCursor = Toolkit.getDefaultToolkit().createCustomCursor(image, new Point(0, 0), "invisibleCursor");
+
+        }
     }
 
 

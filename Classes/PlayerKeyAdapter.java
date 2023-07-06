@@ -30,7 +30,7 @@ public class PlayerKeyAdapter extends KeyAdapter {
             pla.dDown = true;
         }
         if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
-            pla.speed = 6;
+            pla.speed = 7;
         }
         if (e.getKeyCode() == KeyEvent.VK_CONTROL){
             pla.speed = 3;
