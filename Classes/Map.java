@@ -15,7 +15,7 @@ public class Map {
         Cuboids.add(new PhysicsObject(new Hitbox(new double[]{1,1,1},new double[]{1/*x*/,36/*y*/,23/*z*/})));
         Cuboids.add(new PhysicsObject(new Hitbox(new double[]{1,1,1},new double[]{1/*x*/,37/*y*/,24/*z*/})));
         Cuboids.add(new PhysicsObject(new Hitbox(new double[]{1,1,1},new double[]{2/*x*/,36/*y*/,25/*z*/})));
-        Cuboids.add(new PhysicsObject(new Hitbox(new double[]{1,1,1},new double[]{1/*x*/,36/*y*/,26/*z*/})));
+        Cuboids.add(new PhysicsObject(new Hitbox(new double[]{1,1,1},new double[]{2/*x*/,36/*y*/,26/*z*/})));
         Cuboids.add(new PhysicsObject(new Hitbox(new double[]{1,1,1},new double[]{2/*x*/,37/*y*/,27/*z*/})));
 
 
