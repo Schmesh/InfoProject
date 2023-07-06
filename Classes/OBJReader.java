@@ -10,7 +10,7 @@ public class OBJReader {
     OBJReader(){
 
     }
-    public Triangle[] convertOBJToTris(String filename){
+    static public Triangle[] convertOBJToTris(String filename){
         Triangle[] tris = new Triangle[]{};
 
         try {

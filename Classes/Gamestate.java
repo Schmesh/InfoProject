@@ -9,8 +9,11 @@ public class Gamestate {
     protected ArrayList<PhysicsObject> physicsObjects = new ArrayList<>();
     protected Player player = new Player(0,0,21);
 
+    public Map map = new Map();
     Gamestate(){
-        physicsObjects.add(new PhysicsObject(new Hitbox(new double []{1,1,1}, new double[]{0,0,2})));
+
+        //physicsObjects.add(new PhysicsObject(new Hitbox(new double []{1,1,1}, new double[]{0,0,2})));
+            loadMap();
     }
 
     public void loadMap(Map map){
@@ -35,6 +38,9 @@ public class Gamestate {
         return FPS;
     }
 
+    public void loadMap(){
+        this.physicsObjects = map.Cuboids;
+    }
     public void updateGame(){
 
         //System.out.println(player.velocities[0] + "  " + player.velocities[1] + "  " + player.velocities[2] + "    " +player.getPos().getX() + "  " + player.getPos().getY() + "  " + player.getPos().getZ());
