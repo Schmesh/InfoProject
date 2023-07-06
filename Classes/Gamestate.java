@@ -17,7 +17,9 @@ public class Gamestate {
 
     public void loadMap(Map map){
         physicsObjects = map.Cuboids;
-        player.pos = map.spawn;
+        player.currentSpawn = new Point(map.spawn.getX(),map.spawn.getY(),map.spawn.getZ());
+        player.moveTo(new Point(player.currentSpawn.getX(),player.currentSpawn.getY(),player.currentSpawn.getZ()));
+
     }
 
     public ArrayList<Entity> returnEntities(){
