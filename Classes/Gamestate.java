@@ -10,23 +10,29 @@ public class Gamestate {
     protected Player player = new Player(0,0,21);
     public Map map = new Map();
 
+    public double end = 100;
+
+    int currentMap = 0;
     public Graphics graphics;
 
 
     Gamestate(){
 
         //physicsObjects.add(new PhysicsObject(new Hitbox(new double []{1,1,1}, new double[]{0,0,2})));
-        loadMap(map);
+        loadMap(currentMap);
     }
 
-    public void loadMap(Map map){
+    public void loadMap(int index){
+        map.Cuboids = map.maps[index];
+        map.spawn= map.spawns[index];
+        map.end = map.ends[index];
         physicsObjects = map.Cuboids;
         player.currentSpawn = new Punkt(map.spawn.getX(),map.spawn.getY(),map.spawn.getZ());
         player.moveTo(new Punkt(player.currentSpawn.getX(),player.currentSpawn.getY(),player.currentSpawn.getZ()));
         player.mouseLocked = true;
         player.direction = 0;
         player.tilt = 0;
-
+        end = map.end;
     }
 
     public ArrayList<Entity> returnEntities(){
@@ -94,7 +100,14 @@ public class Gamestate {
             player.direction = 0;
             player.tilt = 0;
         }
-
+        if (player.pos.getY() > end){
+            player.moveTo(new Punkt(player.currentSpawn.getX(),player.currentSpawn.getY(),player.currentSpawn.getZ()));
+            player.mouseLocked = true;
+            player.direction = 0;
+            player.tilt = 0;
+            currentMap++;
+            loadMap(currentMap);
+        }
 
         }
 
