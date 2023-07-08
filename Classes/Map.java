@@ -3,15 +3,15 @@ package Classes;
 import java.util.ArrayList;
 
 public class Map {
-    public Point spawn = new Point(0,0,21.5);
+    public Punkt spawn = new Punkt(0,0,21.5);
     public double end = 43;
     ArrayList<PhysicsObject>[] maps = new ArrayList[]{
             new ArrayList(),
             new ArrayList()
     };
-    Point[] spawns = {
-            new Point(0,0,21.5),
-            new Point(0,0,21.5)
+    Punkt[] spawns = {
+            new Punkt(0,0,21.5),
+            new Punkt(0,0,21.5)
     };
 
     double[] ends = new double[]{

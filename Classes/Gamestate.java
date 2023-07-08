@@ -18,7 +18,7 @@ public class Gamestate {
     Gamestate(){
 
         //physicsObjects.add(new PhysicsObject(new Hitbox(new double []{1,1,1}, new double[]{0,0,2})));
-        loadMap(0);
+        loadMap(currentMap);
     }
 
     public void loadMap(int index){
@@ -27,8 +27,8 @@ public class Gamestate {
         map.end = map.ends[index];
 
         physicsObjects = map.Cuboids;
-        player.currentSpawn = new Point(map.spawn.getX(),map.spawn.getY(),map.spawn.getZ());
-        player.moveTo(new Point(player.currentSpawn.getX(),player.currentSpawn.getY(),player.currentSpawn.getZ()));
+        player.currentSpawn = new Punkt(map.spawn.getX(),map.spawn.getY(),map.spawn.getZ());
+        player.moveTo(new Punkt(player.currentSpawn.getX(),player.currentSpawn.getY(),player.currentSpawn.getZ()));
         player.mouseLocked = true;
         player.direction = 0;
         player.tilt = 0;
@@ -93,7 +93,7 @@ public class Gamestate {
             }
 
         if (player.pos.getZ() < 5){
-            player.moveTo(new Point(player.currentSpawn.getX(),player.currentSpawn.getY(),player.currentSpawn.getZ()));
+            player.moveTo(new Punkt(player.currentSpawn.getX(),player.currentSpawn.getY(),player.currentSpawn.getZ()));
             player.mouseLocked = true;
             player.direction = 0;
             player.tilt = 0;
