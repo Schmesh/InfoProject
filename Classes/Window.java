@@ -1,7 +1,5 @@
 package Classes;
 
-import Classes.GraphicsPanel;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -37,7 +35,7 @@ public class Window {
         renderedTris = new ArrayList();
         //maximizes the window
         window.setExtendedState(JFrame.MAXIMIZED_BOTH);
-
+        window.setCursor(window.getToolkit().createCustomCursor(new BufferedImage(1,1, BufferedImage.TYPE_INT_ARGB), new Point(), null));
 
 
 
@@ -53,7 +51,7 @@ public class Window {
         for (int i = 0; i < trianglesLength; i++) {
             if (object.getTriangles()[i] != null){ // && renderTools.normDotProduct(renderTools.getNormal(object.getTriangles()[i]),renderTools.subVector(object.getTriangles()[i].p[0].getXYZ(),new double[]{0,0,0})) < 0 ){
                 //===rotate Points around 0,0,0 then add camera pos
-                Triangle translatedTri = new Triangle(new Point[]{new Point(object.getTriangles()[i].p[0].getXYZ()),new Point(object.getTriangles()[i].p[1].getXYZ()),new Point(object.getTriangles()[i].p[2].getXYZ())});
+                Triangle translatedTri = new Triangle(new Punkt[]{new Punkt(object.getTriangles()[i].p[0].getXYZ()),new Punkt(object.getTriangles()[i].p[1].getXYZ()),new Punkt(object.getTriangles()[i].p[2].getXYZ())});
 
                 //-> move to cam pos
                 translatedTri.p[0].setXyz(renderTools.subVector(translatedTri.p[0].getXYZ(),cam.pos));
@@ -72,10 +70,10 @@ public class Window {
 
 
 
-                    Triangle renderedTri = new Triangle(new Point[3]);
-                    renderedTri.p[0] = new Point(renderTools.project3d2d(translatedTri.p[0].getXYZ() ,cam.fov,panel.getHeight(),panel.getWidth()));
-                    renderedTri.p[1] = new Point(renderTools.project3d2d(translatedTri.p[1].getXYZ() ,cam.fov,panel.getHeight(),panel.getWidth()));
-                    renderedTri.p[2] = new Point(renderTools.project3d2d(translatedTri.p[2].getXYZ() ,cam.fov,panel.getHeight(),panel.getWidth()));
+                    Triangle renderedTri = new Triangle(new Punkt[3]);
+                    renderedTri.p[0] = new Punkt(renderTools.project3d2d(translatedTri.p[0].getXYZ() ,cam.fov,panel.getHeight(),panel.getWidth()));
+                    renderedTri.p[1] = new Punkt(renderTools.project3d2d(translatedTri.p[1].getXYZ() ,cam.fov,panel.getHeight(),panel.getWidth()));
+                    renderedTri.p[2] = new Punkt(renderTools.project3d2d(translatedTri.p[2].getXYZ() ,cam.fov,panel.getHeight(),panel.getWidth()));
 
                     //if y > 0 only temporary approach until clipping is implemented
 
@@ -102,7 +100,7 @@ public class Window {
         for (int i = 0; i < trianglesLength; i++) {
             if (object.getTriangles()[i] != null){ // && renderTools.normDotProduct(renderTools.getNormal(object.getTriangles()[i]),renderTools.subVector(object.getTriangles()[i].p[0].getXYZ(),new double[]{0,0,0})) < 0 ){
                 //===rotate Points around 0,0,0 then add camera pos
-                Triangle translatedTri = new Triangle(new Point[]{new Point(object.getTriangles()[i].p[0].getXYZ()),new Point(object.getTriangles()[i].p[1].getXYZ()),new Point(object.getTriangles()[i].p[2].getXYZ())});
+                Triangle translatedTri = new Triangle(new Punkt[]{new Punkt(object.getTriangles()[i].p[0].getXYZ()),new Punkt(object.getTriangles()[i].p[1].getXYZ()),new Punkt(object.getTriangles()[i].p[2].getXYZ())});
 
                 //-> move to cam pos
                 translatedTri.p[0].setXyz(renderTools.subVector(translatedTri.p[0].getXYZ(),cam.pos));
@@ -121,10 +119,10 @@ public class Window {
 
 
 
-                Triangle renderedTri = new Triangle(new Point[3]);
-                renderedTri.p[0] = new Point(renderTools.project3d2d(translatedTri.p[0].getXYZ() ,cam.fov,panel.getHeight(),panel.getWidth()));
-                renderedTri.p[1] = new Point(renderTools.project3d2d(translatedTri.p[1].getXYZ() ,cam.fov,panel.getHeight(),panel.getWidth()));
-                renderedTri.p[2] = new Point(renderTools.project3d2d(translatedTri.p[2].getXYZ() ,cam.fov,panel.getHeight(),panel.getWidth()));
+                Triangle renderedTri = new Triangle(new Punkt[3]);
+                renderedTri.p[0] = new Punkt(renderTools.project3d2d(translatedTri.p[0].getXYZ() ,cam.fov,panel.getHeight(),panel.getWidth()));
+                renderedTri.p[1] = new Punkt(renderTools.project3d2d(translatedTri.p[1].getXYZ() ,cam.fov,panel.getHeight(),panel.getWidth()));
+                renderedTri.p[2] = new Punkt(renderTools.project3d2d(translatedTri.p[2].getXYZ() ,cam.fov,panel.getHeight(),panel.getWidth()));
 
                 //if y > 0 only temporary approach until clipping is implemented
 

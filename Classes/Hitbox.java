@@ -2,7 +2,7 @@ package Classes;
 //Axis aligned bounding box
 public class Hitbox {
     public double[] size;
-    public Point pos = new Point(0,0,0);
+    public Punkt pos = new Punkt(0,0,0);
     public double diagonal;
     Hitbox(double[] size, double[] pos){
         this.size = size;
@@ -14,15 +14,15 @@ public class Hitbox {
         pos.move(distance);
     }
 
-    public void moveTo(Point point){
-        pos = point;
+    public void moveTo(Punkt punkt){
+        pos = punkt;
     }
 
     public void move(double dx, double dy, double dz){
         pos.move(dx,dy,dz);
     }
 
-    public Point getPos() {
+    public Punkt getPos() {
         return pos;
     }
 }

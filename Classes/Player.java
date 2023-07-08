@@ -19,7 +19,7 @@ public class Player extends Entity  {
     public PlayerKeyAdapter k1;
 
     public boolean mouseLocked = false;
-    public Point currentSpawn = new Point(0,0,0);
+    public Punkt currentSpawn = new Punkt(0,0,0);
 
     Player(double x, double y, double z) {
         super(new Hitbox(new double[]{1,1,2}, new double[]{x,y,z}));
